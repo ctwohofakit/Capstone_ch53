@@ -1,0 +1,27 @@
+{% extends "base.html" %}
+{% block title %}Past Interviews{% endblock title %}
+
+{% block content %}
+<br>
+
+<div class="interview-section">
+  {% for interview in interviews %}
+    <div class="interview-card">
+      <h3>{{ interview.wanted_role }}</h3>
+      <h4>{{ interview.company_name }}</h4>
+      <p>{{ interview.question_type }}</p>
+      <small>Created on {{ interview.created_by|date:"F j, Y, g:i a" }}</small>
+      <div class="actions">
+        <a href="{% url 'interview_detail' interview.pk %}">
+          <button>Details</button>
+        </a>
+        <a href="{% url 'interview_delete' interview.pk %}">
+          <button>Delete</button>
+        </a>
+      </div>
+    </div>
+  {% empty %}
+    <p>You haven’t done any mock interviews yet.</p>
+  {% endfor %}
+</div>
+{% endblock content %}

@@ -1,0 +1,23 @@
+{% extends "base.html" %}
+
+{% block title %}
+  Delete {{ interview.wanted_role }}
+{% endblock title %}
+
+{% block content %}
+<div class="delete-form">
+  <h1>Delete this interview?</h1>
+  <p>
+    Are you sure you want to delete  
+    <strong>{{ interview.wanted_role }}</strong>  
+    (created on {{ interview.created_by|date:"F j, Y, g:i a" }})?
+  </p>
+  <form method="post">
+    {% csrf_token %}
+    <button type="submit" class="submit-button">Confirm</button>
+    <a href="{% url 'interview_list' %}">
+      <button type="button" class="cancel-button">Cancel</button>
+    </a>
+  </form>
+</div>
+{% endblock content %}

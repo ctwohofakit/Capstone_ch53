@@ -1,1 +1,16 @@
+{%extends "base.html"%}
+{%block title%}Interview Setup{%endblock title%}
+{%load static%}
+{%block content%}
+<h1>Please provide below information about your interview:</h1>
+<form method="POST">
+    {%csrf_token%}
+    {{form.as_p}}
+    <input type="submit" value="Start Interview" class="start-btn">
+</form>
 
+{%block js%}
+{%endblock%}
+
+
+{%endblock content%}

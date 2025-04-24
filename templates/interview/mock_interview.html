@@ -1,0 +1,38 @@
+{%extends "base.html"%}
+{%block title%} Mock Interview {%endblock title%}
+{%load static%}
+{%block content%}
+
+<h1>Mock Interview</h1>
+<div class="chat-container">
+    {% for msg in conversation %}
+      <div class="chat-bubble {{ msg.role }}">
+        <strong>
+          {% if msg.role == 'assistant' %}Interviewer:{% else %}You:{% endif %}
+        </strong>
+        {{ msg.content }}
+      </div>
+    {% endfor %}
+  </div>
+
+
+  {% if feedback %}
+    <div id="feedback-box">
+      <h2>Feedback Summary</h2>
+      <p class="feedback-text">{{ feedback }}</p>
+    </div>
+  {% endif %}
+
+
+  <label>Your Answer:</label>
+  <form method="post" id="answer-form">
+    {% csrf_token %}
+    {{ form.user_answer }}
+    <button name="action" value="submit_answer">Submit Answer</button>
+    <button name="action" value="finish_interview" formnovalidate>Finish Interview</button>
+  </form>
+
+
+
+{%endblock%}
+
