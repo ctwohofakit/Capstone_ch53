@@ -1,0 +1,25 @@
+{% load static %}
+
+<div class="sidebar text-center">
+  <h4>Categories</h4>
+  <ul class="category-list">
+    <li>
+      <a href="{% url 'interview_list' %}"
+         class="{% if not selected_category_id %}active{% endif %}">
+        <button class="sidebar-button-center">All Interviews</button>
+      </a>
+    </li>
+    {% for cat in categories %}
+      <li>
+        <a href="{% url 'interview_list' %}?category_id={{ cat.pk }}"
+           class="{% if selected_category_id == cat.pk|stringformat:'s' %}active{% endif %}">
+          <button class="sidebar-button">
+            <img src="{% static 'icons/' %}{{ cat.icon_name }}.svg"
+                 alt="{{ cat.name }} icon" class="category-icon"/>
+                 &nbsp{{ cat.name }}
+          </button>
+        </a>
+      </li>
+    {% endfor %}
+  </ul>
+</div>

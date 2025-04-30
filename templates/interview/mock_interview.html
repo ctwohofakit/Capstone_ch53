@@ -1,20 +1,28 @@
-{%extends "base.html"%}
-{%block title%} Mock Interview {%endblock title%}
+{% extends "base.html" %}
+{% block title %}Mock Interview{% endblock title %}
 {%load static%}
-{%block content%}
+{% block css %}
+  <link rel="stylesheet" href="{% static 'css/mock.css' %}">
+{% endblock css %}
 
-<h1>Mock Interview</h1>
-<div class="chat-container">
+
+{% block content %}
+  <div class="chat">
+    <h2 >Mock Interview</h2>
+    <hr>
+  </div>
+
+  <div class="chat-container">
     {% for msg in conversation %}
       <div class="chat-bubble {{ msg.role }}">
-        <strong>
-          {% if msg.role == 'assistant' %}Interviewer:{% else %}You:{% endif %}
-        </strong>
-        {{ msg.content }}
+        {% if msg.role == "assistant" %}
+          <p><strong class="interviewer">Interviewer:</strong> {{ msg.content }}</p>
+        {% elif msg.role == "user" %}
+          <p><strong class="user">You:</strong> {{ msg.content }}</p>
+        {% endif %}
       </div>
     {% endfor %}
   </div>
-
 
   {% if feedback %}
     <div id="feedback-box">
@@ -22,17 +30,28 @@
       <p class="feedback-text">{{ feedback }}</p>
     </div>
   {% endif %}
-
-
-  <label>Your Answer:</label>
+  
+  <div class="answer">
+    
   <form method="post" id="answer-form">
+    <label>Input answer below:</label>
     {% csrf_token %}
     {{ form.user_answer }}
-    <button name="action" value="submit_answer">Submit Answer</button>
-    <button name="action" value="finish_interview" formnovalidate>Finish Interview</button>
+    <div class="answer-button">
+      <button id="submit-answer" class="sub-btn" name="action" value="submit_answer">Submit Answer</button>
+      <button class="fin-btn" name="action" value="finish_interview" formnovalidate>Finish Interview</button>
+        <a href="{% url 'interview_detail' interview.pk %}"
+        class="return-btn" title="Back to Interview Details">
+        <img src="{% static 'icons/' %}return.svg" class="back-icon"/>
+        </button>
+        </a>
+      </li>
+    </div>
   </form>
+  </div>
 
-
+{%block js%}
+<script src="{% static 'js/mock.js' %}"></script>
 
 {%endblock%}
-
+{% endblock content %}

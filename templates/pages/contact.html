@@ -1,0 +1,59 @@
+{% extends "base.html" %}
+{% block title %}Contact Us{% endblock title %}
+
+{%load static%}
+{% block css %}
+  <link rel="stylesheet" href="{% static 'css/contact.css' %}">
+{% endblock css %}
+
+{% block content %}
+
+<div class="dashboard">
+    {# Left sidebar #}
+  <aside class="sidebar-container">
+    {% include "pages/contactside.html" %}
+  </aside>
+
+<div class="contact">
+    <div class="contact-head">
+        <h2>CONTACT</h2>
+        <p>contact us about any inquery. </p>
+    </div>
+
+    <div class="contact-section">
+        <form class="contact-form" method="post">
+            {%csrf_token%}
+            <div class="name-wrap">
+                <div class="name-section">
+                    <label>First Name:</label>
+                    {{form.firstname}}
+                </div>
+                <div class="name-section">
+                    <label>Last Name:</label>
+                    {{form.lastname}}
+                </div>
+            </div>
+                <label>Email:</label>
+                {{form.email}}
+                <hr>
+
+                <label>Subject:</label>
+                {{form.subject}}
+                <label>Message:</label>
+                {{form.message}}
+
+            <div class="contact-btns">
+
+                
+                <button class="edit-btn" type="submit">SEND</button>
+            </div>
+
+        </form>
+    </div> 
+</div>
+
+
+
+
+
+{% endblock content %}

@@ -1,22 +1,40 @@
 {% extends "base.html" %}
-
 {% block title %}Interview: {{ interview.wanted_role }} at {{ interview.company_name }}{% endblock title %}
+{%load static%}
+{% block css %}
+  <link rel="stylesheet" href="{% static 'css/details.css' %}">
+{% endblock css %}
+
+
 
 {% block content %}
-  <h1>Interview for {{ interview.wanted_role }} @ {{ interview.company_name }}</h1>
-  <p><strong>Type:</strong> {{ interview.question_type }}</p>
-  <p><strong>Tech:</strong> {{ interview.technology }}</p>
-  <p><small>Started on {{ interview.created_by|date:"F j, Y, g:i a" }}</small></p>
+  <div class="detail-head">
+    <h5>{{ interview.company_name }}</h5>
+    <h2>Interview for {{ interview.wanted_role }} </h2>
+    <p><strong>Type:</strong> {{ interview.question_type }}</p>
+    <p><strong>Technology:</strong> {{ interview.technology }}</p>
+    <p><small>Started on {{ interview.created_by|date:"F j, Y, g:i a" }}</small></p>
+
+  <div class="actions">
+    <a href="{% url 'redo' interview.pk %}">
+      <button class="edit-btn">Re-take Interview</button>
+    </a>
+
+    <a href="{% url 'interview_delete' interview.pk %}">
+      <button class="del-btn">Delete Interview</button>
+    </a>
+  </div>
 
   <hr>
+  </div>
 
-  <h2>Conversation</h2>
+  <h4 class="text-center">Conversation</h4>
   <div class="chat-history">
     {% for msg in messages %}
       {% if msg.role == 'assistant' %}
-        <p><strong>Interviewer:</strong> {{ msg.content }}</p>
+        <p><strong class="interviewer">Interviewer:</strong> &nbsp;{{ msg.content }}</p>
       {% elif msg.role == 'user' %}
-        <p><strong>{You:}</strong> {{ msg.content }}</p>
+        <p><strong class="user">{{user.username}}:</strong>&nbsp; {{ msg.content }}</p>
       {% endif %}
     {% empty %}
       <p><em>No conversation has been recorded.</em></p>
@@ -25,12 +43,5 @@
 
 
 
-  <div class="actions">
-    <a href="{% url 'mock_interview' %}">
-      <button class="edit-btn">Re-take Interview</button>
-    </a>
-    <a href="{% url 'interview_delete' interview.pk %}">
-      <button class="del-btn">Delete Interview</button>
-    </a>
-  </div>
+
 {% endblock content %}

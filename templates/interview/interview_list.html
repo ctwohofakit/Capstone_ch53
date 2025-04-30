@@ -1,27 +1,82 @@
 {% extends "base.html" %}
 {% block title %}Past Interviews{% endblock title %}
 
-{% block content %}
-<br>
+{%load static%}
+{% block css %}
+  <link rel="stylesheet" href="{% static 'css/interview.css' %}">
+  <link rel="stylesheet" href="{% static 'css/card.css' %}">
+{% endblock css %}
 
-<div class="interview-section">
-  {% for interview in interviews %}
-    <div class="interview-card">
-      <h3>{{ interview.wanted_role }}</h3>
-      <h4>{{ interview.company_name }}</h4>
-      <p>{{ interview.question_type }}</p>
-      <small>Created on {{ interview.created_by|date:"F j, Y, g:i a" }}</small>
-      <div class="actions">
-        <a href="{% url 'interview_detail' interview.pk %}">
-          <button>Details</button>
-        </a>
-        <a href="{% url 'interview_delete' interview.pk %}">
-          <button>Delete</button>
-        </a>
-      </div>
+{% block content %}
+<div class="dashboard">
+  {# Left sidebar #}
+<aside class="sidebar-container">
+  {% include "interview/sidebar.html" %}
+</aside>
+
+
+
+  {# interview histroy #}
+<div class="content">
+  <div class="interview-head">
+    <h2>Interviews Dashboard</h2>
+    <input type="checkbox" id="modalToggle" class="modal-toggle" />  
+    <label for="modalToggle" class="compose">+</label>
+
+  <div class="modal">
+    <div class="modal-content">
+      <label for="modalToggle" class="modal-close">&times;</label>
+
+      <h2>Start a New Interview</h2>
+      <form class="in-form" method="post" action="{% url 'interview_setup' %}">
+        {% csrf_token %}
+        {{ setup_form.as_p }}
+        <button type="submit" class="start-btn">Start Interview</button>
+      </form>
+
     </div>
-  {% empty %}
-    <p>You haven’t done any mock interviews yet.</p>
-  {% endfor %}
+  </div>
+  </div>
+
+  <div class="interview-section">
+    {% for interview in interviews %}
+      <a href="{% url 'interview_detail' interview.pk %}" class="interview-card">
+        {% if interview.category and interview.category.image %}
+          <img src="{{ interview.category.image.url }}" alt="{{ interview.category.name }}">
+        {% else %}
+          <img src="{% static 'img/category_images/default.jpg' %}" alt="Default Category">
+        {% endif %}
+
+        <span class="one-third">
+          <svg xmlns="http://www.w3.org/2000/svg" height="20px" viewBox="0 -960 960 960" width="20px" fill="white"><path d="M200-80q-33 0-56.5-23.5T120-160v-560q0-33 23.5-56.5T200-800h40v-80h80v80h320v-80h80v80h40q33 0 56.5 23.5T840-720v560q0 33-23.5 56.5T760-80H200Zm0-80h560v-400H200v400Zm0-480h560v-80H200v80Zm0 0v-80 80Zm280 240q-17 0-28.5-11.5T440-440q0-17 11.5-28.5T480-480q17 0 28.5 11.5T520-440q0 17-11.5 28.5T480-400Zm-160 0q-17 0-28.5-11.5T280-440q0-17 11.5-28.5T320-480q17 0 28.5 11.5T360-440q0 17-11.5 28.5T320-400Zm320 0q-17 0-28.5-11.5T600-440q0-17 11.5-28.5T640-480q17 0 28.5 11.5T680-440q0 17-11.5 28.5T640-400ZM480-240q-17 0-28.5-11.5T440-280q0-17 11.5-28.5T480-320q17 0 28.5 11.5T520-280q0 17-11.5 28.5T480-240Zm-160 0q-17 0-28.5-11.5T280-280q0-17 11.5-28.5T320-320q17 0 28.5 11.5T360-280q0 17-11.5 28.5T320-240Zm320 0q-17 0-28.5-11.5T600-280q0-17 11.5-28.5T640-320q17 0 28.5 11.5T680-280q0 17-11.5 28.5T640-240Z"/></svg>
+          {{ interview.created_by|date:"j F Y" }} 
+           <label class="tag">{{ interview.question_type }}</label>
+        </span>
+        <h4>{{ interview.company_name }}</h4>
+        <h3>{{ interview.wanted_role }}</h3>
+
+        {% with first=interview.messages.all.1 %}
+          {% if first %}
+            <p class="preview">{{ first.content|truncatechars:100 }}…</p>
+            <p>REVIEW...</p>
+          {% else %}
+            <p class="preview">No conversation recorded.</p>
+          {% endif %}
+        {% endwith %}
+
+
+        <div class="go-corner"><div class="go-arrow">→</div>
+      
+      </div>
+      </a>
+
+    {% empty %}
+    <br>
+    <br>
+      <p>You haven’t done any mock interviews yet.</p>
+    {% endfor %}
+  </div>
+
+</div>
 </div>
 {% endblock content %}

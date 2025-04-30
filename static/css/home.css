@@ -1,4 +1,35 @@
+:root{
+    --background-color:#000000;
+    --primary:#2bb4f3;
+    --footer:#7c87f2;
+    --link:#0ea3e6;
+    --success:#2fd0ba;
+    --error:#f170b1;
+    --nav:#21da83;
+    --button:linear-gradient(120deg, #939dfb 0%, #575af5 100%);
+    --grad:linear-gradient(65deg,#41ce8c, #647eff,#647eff,#c2ccff);
+    --DM-font:font-family: "Inter",sans-serif;
+}
 
+body{
+    background-color: var(--background-color);
+    background-image: url("/static/img/pattern.png");
+    background-repeat: repeat;       
+    background-position: center center; 
+    background-size: cover;  
+    color:rgb(255, 255, 255);
+}
+
+header{
+    top:0
+}
+
+.navbar{
+    z-index: 0 !important;
+}
+.pre-icon{
+    width:5em;
+}
 .navbar-brand{
     width:40%;
     padding:0 0 0 5rem;
@@ -17,23 +48,51 @@ a{
     color:white;
 }
 .nav:hover{
-    color:rgb(67, 231, 196);
+    color:var(--nav);
 }
 .nav::after{
     color:rgb(255, 255, 255);
 }
 
-.chat-bubble.assistant {
-    background-color: rgb(235, 234, 233);
-    border-radius:10px;
-    padding:1% 5% 1% 5%;
+#nav-check,.nav-btn{
+    display: block;
 }
-.chat-bubble.user {
-    background-color: rgb(224, 219, 214);
-    border-radius:10px;
-    padding:1% 5% 1% 5%;
+
+.nav-btn label{
+    width:30px;
+    background-color: rgb(255, 255, 255);
+    height:2px;
+    margin:2px 0px;
+    cursor: pointer;
 }
-.feedback-container{
-    background-color: rgba(var(--bs-dark-rgb));
-    color:white;
+
+#nav-check,
+.nav-btn {
+  display: none;
 }
+
+.navbar-brand {
+  width: 40%;
+  padding-left: 5rem;
+}
+
+.center-row {
+  width: 40%;
+  display: flex;
+  gap: 2rem;
+  padding: 0 5rem;
+  align-items: center;
+}
+
+.pre-icon {
+  width: 5em;
+}
+
+.nav {
+  color: white;
+  text-decoration: none;
+}
+.nav:hover {
+  color: var(--nav);
+}
+

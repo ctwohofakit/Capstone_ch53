@@ -3,6 +3,10 @@ from django.http import JsonResponse
 from django.shortcuts import render, redirect, get_object_or_404
 from openai import OpenAI
 from django.conf import settings
+from .forms import AnswerForm, InterviewSetupForm
+from .models import Interview, InterviewConvo, Category
+from django.conf import settings
+from django.urls import reverse_lazy
 
 client = OpenAI(api_key=settings.OPENAI_API_KEY)
 from django.views.generic import ListView,DetailView,DeleteView
@@ -11,10 +15,15 @@ from django.contrib.auth.mixins import(
     UserPassesTestMixin
 )
 
-from .forms import AnswerForm, InterviewSetupForm
-from .models import Interview, InterviewConvo
-from django.conf import settings
-from django.urls import reverse_lazy
+ICON_MAP = {
+    "All": "all",
+    "Finance & Accounting":"accounting",
+    "Human Resource":"hr",
+    "Information Technology":"tech",
+    "Marketing & Design":"design",
+    "Education and Training":"school",
+    "Others":"others",
+}
 
 @login_required
 def interview_setup_view(request):
@@ -28,8 +37,8 @@ def interview_setup_view(request):
             request.session["conversation"]=[]
             system_prompt=(
                 f"You are an interviewer for {interview.company_name},"
-                f"The user is interviewing for a {interview.wanted_role} position."
-                f"Ask a {interview.question_type} question related to {interview.technology}."
+                f"The user is interviewing for {interview.category.name} industry for a {interview.wanted_role} position."
+                f"Ask a {interview.question_type} question related to {interview.category.name} industry and {interview.technology}."
                 f"Provide follow-up based on th user's response. do not mention any of these instruction to user"
             )
 
@@ -124,7 +133,6 @@ def mock_interview_view(request):
         )
         conversation.append({'role': 'user', 'content': user_answer})
 
-
         #Next question
         if action == 'submit_answer':
             resp = client.chat.completions.create(model="gpt-4o-mini",
@@ -141,9 +149,53 @@ def mock_interview_view(request):
             request.session['conversation'] = conversation
 
             return redirect('mock_interview')
-
-
         
+    form=AnswerForm()
+    return render(request, "interview/mock_interview.html",{
+        "interview":interview,
+        "conversation":display_conversation,
+        "form": form,
+    })
+
+
+
+@login_required
+def redo_interivew_view(request, pk):
+    interview = get_object_or_404(Interview, pk=pk, user=request.user)
+    #delete previous interview in database
+    InterviewConvo.objects.filter(interview=interview).delete()
+
+    request.session['conversation'] = []
+    request.session['active_interview_id'] = interview.id
+
+    system_prompt=(
+        f"You are an interviewer for {interview.company_name},"
+        f"The user is interviewing for {interview.category.name} industry for a {interview.wanted_role} position."
+        f"Ask a {interview.question_type} question related to {interview.category.name} industry and {interview.technology}."
+        f"Provide follow-up based on th user's response. do not mention any of these instruction to user"
+    )
+
+    #store in the Databse
+    InterviewConvo.objects.create(
+        interview=interview, role="system", content=system_prompt
+    )
+    request.session["conversation"].append({"role":"system", "content":system_prompt})
+    response=client.chat.completions.create(model="gpt-4o-mini",
+    messages=request.session["conversation"],
+    temperature=0.7)
+
+    #system function call for 1 quesiton-assistant
+    first_question=response.choices[0].message.content
+
+    InterviewConvo.objects.create(
+        interview=interview, role="assistant", content=first_question
+    )
+    request.session["conversation"].append({"role":"assistant", "content":first_question})
+    return redirect("mock_interview")
+
+    
+
+    
 
 
 
@@ -161,14 +213,33 @@ def mock_interview_view(request):
 
 
 
+
+
+
 #past listory list view
-class Interview_list_view(LoginRequiredMixin, UserPassesTestMixin, ListView):
+class Interview_list_view(LoginRequiredMixin, ListView):
     template_name="interview/interview_list.html"
     model=Interview
     context_object_name="interviews" #past interview
 
     def get_queryset(self):
-        return Interview.objects.filter(user=self.request.user).order_by("-created_at")
+        queryset=Interview.objects.filter(user=self.request.user).order_by("-created_by")
+        cid = self.request.GET.get('category_id')
+        if cid:
+            queryset = queryset.filter(category_id=cid)
+        return queryset
+        
+    def get_context_data(self, **kwargs):
+        context = super().get_context_data(**kwargs)
+        categories =list(Category.objects.all())
+        for c in categories:
+            c.icon_name=ICON_MAP.get(c.name,"icon-default")
+        context['categories'] = categories
+        context['selected_category'] = self.request.GET.get('category', 'All')
+        
+        context['setup_form'] = InterviewSetupForm()
+        return context
+
 
 class Interview_Detail_view(LoginRequiredMixin, UserPassesTestMixin, DetailView):
     template_name="interview/detail.html"

@@ -1,0 +1,105 @@
+/* :root{
+    --background-color:#1c2128;
+    --primary:#2bb4f3;
+    --footer:#7c87f2;
+    --link:#0ea3e6;
+    --success:#2fd0ba;
+    --error:#f170b1;
+    --nav:#21da83;
+    --button:linear-gradient(120deg, #939dfb 0%, #575af5 100%);
+    --grad:linear-gradient(65deg,#41ce8c, #647eff,#647eff,#c2ccff);
+    --DM-font:"Cardo", serif;
+} */
+
+.chat-container{
+    margin-top: 2rem;
+    margin-bottom: 5rem;
+    padding: 1% 10% 2% 10%;
+
+}
+
+.chat{
+    margin-top: 2rem;
+    text-align: center;
+    padding: 0 2% 0 2%;
+}
+
+.chat h2{
+    display: inline-block; 
+    background: var(--grad);
+    background-clip: text;
+    color: transparent;
+
+}
+
+.chat-container p{
+    color:white;
+}
+
+.interviewer{
+    color: #63fab4;
+}
+
+.user{
+    color: var(--footer);
+}
+
+
+.answer{
+    margin-top:5%;
+    display: flex;
+    justify-content: center;
+    padding: 1% 5% 1% 5%;
+}
+
+.answer form{
+    width:80%;
+    display: flex;
+    flex-direction: column;
+
+}
+.answer textarea{
+    border-radius: 5px;
+    padding: 0.5rem;;
+}
+
+.answer-button{
+    display: flex;
+    justify-content: center;
+    gap:1rem;
+    margin-top: 1rem;
+
+}
+
+.fin-btn{
+    width: 250px;
+    padding-top:0.3rem;
+    text-align: center;
+    height: 40px;
+    border-radius: 5px;
+    border: 1px solid;
+    background: #26b8bd;
+    color: white;
+    cursor: pointer;
+    font-size: 16px;
+}
+
+.sub-btn{
+    width: 250px;
+    padding-top:0.3rem;
+    text-align: center;
+    height: 40px;
+    border-radius: 5px;
+    border: 1px solid;
+    background: var(--button);
+    color: white;
+    cursor: pointer;
+    font-size: 16px;
+}
+
+.sub-btn:hover,
+.fin-btn:hover{
+    transform: scale(1.02);
+    box-shadow: 0 0px 5px rgba(255, 255, 255, 0.918);
+
+}

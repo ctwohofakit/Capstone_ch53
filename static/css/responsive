@@ -1,0 +1,22 @@
+@media(max-width:640px){
+
+    .navbar-brand { 
+        padding-left: 0;
+     }
+    .pre-icon { 
+        width: 2.5em; 
+    }
+}
+
+
+
+
+/*tablet view*/
+@media (min-width: 641px) and (max-width: 1007px) {
+
+    
+
+
+
+
+}
