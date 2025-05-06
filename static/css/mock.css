@@ -17,9 +17,15 @@
     padding: 1% 10% 2% 10%;
 
 }
+hr{
+    border: none;
+    border-top:1px dashed #f0e9e9;
+    margin-top:1rem;
+    width:100%;
+}
 
 .chat{
-    margin-top: 2rem;
+    margin-top: 5rem;
     text-align: center;
     padding: 0 2% 0 2%;
 }
@@ -101,5 +107,14 @@
 .fin-btn:hover{
     transform: scale(1.02);
     box-shadow: 0 0px 5px rgba(255, 255, 255, 0.918);
+
+}
+
+
+
+.return-icon svg{
+    margin-top: 0.2rem;
+    width: 2rem;
+    height: 2rem;
 
 }

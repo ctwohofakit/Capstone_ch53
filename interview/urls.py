@@ -12,4 +12,5 @@ urlpatterns = [
     path('<int:pk>/', Interview_Detail_view.as_view(), name='interview_detail'),
     path('delete/<int:pk>/', Interview_Delete_view.as_view(), name='interview_delete'),
     path('restart/<int:pk>', redo_interivew_view, name='redo'),
+    
 ]

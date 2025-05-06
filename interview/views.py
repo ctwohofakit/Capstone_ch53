@@ -89,6 +89,8 @@ def mock_interview_view(request):
         
         #Final feedback, due to form not need validation on this
         if action == 'finish_interview':
+            interview.is_finished=True
+            interview.save()
             final_prompt = {
                 'role': 'system',
                 'content': (
@@ -109,7 +111,7 @@ def mock_interview_view(request):
             )
             conversation.append({'role': 'assistant', 'content': feedback})
             request.session['conversation'] = conversation
-            return redirect('mock_interview')
+            return redirect('interview_detail', pk=interview.pk)
 
 
 

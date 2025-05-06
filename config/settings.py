@@ -16,6 +16,7 @@ import openai
 import certifi
 import environ
 
+
 load_dotenv()
 os.environ["SSL_CERT_FILE"]=certifi.where()
 #load env file
@@ -33,6 +34,7 @@ BASE_DIR = Path(__file__).resolve().parent.parent
 
 # SECURITY WARNING: keep the secret key used in production secret!
 SECRET_KEY = os.getenv("SECRET_KEY")
+RECAPTCHA_SECRET_KEY =os.getenv("RECAPTCHA_SECRET_KEY")
 
 
 # SECURITY WARNING: don't run with debug turned on in production!
@@ -50,9 +52,24 @@ INSTALLED_APPS = [
     'django.contrib.sessions',
     'django.contrib.messages',
     'django.contrib.staticfiles',
+
+
+    #app
     'pages',
     'interview',
+    'accounts',
+
+    #allauth
+    "django.contrib.sites",
+    "allauth",
+    "allauth.account",
+    "allauth.socialaccount",
+    "allauth.socialaccount.providers.google",
 ]
+
+
+#suppose to use 1, but there was prefine site, example.com 2
+SITE_ID = 2
 
 MIDDLEWARE = [
     'django.middleware.security.SecurityMiddleware',
@@ -62,9 +79,13 @@ MIDDLEWARE = [
     'django.contrib.auth.middleware.AuthenticationMiddleware',
     'django.contrib.messages.middleware.MessageMiddleware',
     'django.middleware.clickjacking.XFrameOptionsMiddleware',
+    'allauth.account.middleware.AccountMiddleware',
 ]
 
+
+
 ROOT_URLCONF = 'config.urls'
+
 
 TEMPLATES = [
     {
@@ -150,3 +171,32 @@ EMAIL_HOST_USER=env('SMTP_EMAIL')
 EMAIL_HOST_PASSWORD=env('SMTP_PASS')
 
 LOGIN_REDIRECT_URL = '/'
+
+
+AUTH_USER_MODEL="accounts.Account"
+SOCIALACCOUNT_PROVIDERS = {
+    'google': {
+        'SCOPE': [
+            'profile',
+            'email',
+        ],
+        'AUTH_PARAMS': {
+            'access_type': 'online',
+        },
+    }
+}
+
+ACCOUNT_USER_MODEL_USERNAME_FIELD = None
+ACCOUNT_LOGIN_METHODS   = ["email"]
+ACCOUNT_SIGNUP_FIELDS   = ["email*", "password1*", "password2*"]
+ACCOUNT_EMAIL_VERIFICATION = 'none'
+
+AUTHENTICATION_BACKENDS = [
+    "django.contrib.auth.backends.ModelBackend",           
+    "allauth.account.auth_backends.AuthenticationBackend", 
+]
+LOGIN_REDIRECT_URL="/"
+LOGOUT_REDIRECT_URL="/"
+
+SOCIALACCOUNT_LOGIN_ON_GET=True
+ACCOUNT_LOGIN_ON_EMAIL_CONFIRMATION = True

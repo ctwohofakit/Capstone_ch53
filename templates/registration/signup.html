@@ -1,0 +1,62 @@
+{%extends 'base.html'%}
+{%load static%}
+{% block css %}
+  <link rel="stylesheet" href="{% static 'css/login.css' %}">
+{% endblock css %}
+
+{%block title%}Sign Up{%endblock title%}
+
+{%block content%}
+<div class="signup-form-wrap">
+    <div class="signup-form-head">
+    <h2>Sign up</h2>
+    </div>
+    <div class="signup-container">
+    <form method="POST">
+
+        {%csrf_token%}
+        <div class="signup-form">
+            <div class="name-wrap">
+                <div class="name-section">
+                    <label>First Name:</label>
+                    {{form.first_name}}
+                </div>
+                <div class="name-section">
+                    <label>Last Name:</label>
+                    {{form.last_name}}
+                </div>
+            </div>
+            <div class="name-full">
+                <label>Email:</label>
+                {{form.email}}
+            </div>
+            <div class="name-full">
+                <label>Password:</label>
+                {{form.password1}}
+            </div>
+            <div class="name-full">
+                <label>Re-Confirm Password:</label>
+                {{form.password2}}
+            </div>
+
+        <br>
+        <input type="submit" class="edit-btn" value="Sign up">
+        </div>
+    </form>
+
+    <hr>
+    <div>
+    {% load socialaccount %}
+    <a class="google-btn" href="{% provider_login_url 'google' process='signup' %}">
+     Sign up with Google
+    </a>
+    </div>
+    <div class="sign-btn">
+    <p>Already have an account? <a href="{% url 'login' %}"> Login </a>
+    </p>
+    </div>
+    </div>
+</div>
+
+
+{%endblock content%}

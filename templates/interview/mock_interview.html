@@ -39,13 +39,7 @@
     {{ form.user_answer }}
     <div class="answer-button">
       <button id="submit-answer" class="sub-btn" name="action" value="submit_answer">Submit Answer</button>
-      <button class="fin-btn" name="action" value="finish_interview" formnovalidate>Finish Interview</button>
-        <a href="{% url 'interview_detail' interview.pk %}"
-        class="return-btn" title="Back to Interview Details">
-        <img src="{% static 'icons/' %}return.svg" class="back-icon"/>
-        </button>
-        </a>
-      </li>
+      <button class="fin-btn" id="finish" name="action" value="finish_interview" formnovalidate>Finish Interview</button>
     </div>
   </form>
   </div>

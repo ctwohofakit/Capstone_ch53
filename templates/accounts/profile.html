@@ -1,0 +1,141 @@
+{%extends 'base.html'%}
+{%block title%}Profile Settings{%endblock title%}
+
+{%load static%}
+  {% block css %}
+    <link rel="stylesheet" href="{% static 'css/profile.css' %}">
+  {% endblock css %}
+
+{%block content%}
+  <div class="profile">
+    <h2>Profile Settings</h2>
+  </div>
+  {%if messages%}
+    {%for msg in messages%}
+      <div class="messages">
+          <label class="alert{{msg.tags}}">{{msg}}</label>
+      {%endfor%}
+      </div>
+  {%endif%}
+
+<div id="tab-profile" class="tab-content active">
+  <div class="profile-container">
+    <div class="tabs">
+      <button data-target="#tab-profile" class="tab-btn active">Profile</button>
+      <button data-target="#tab-password" class="tab-btn">Password</button>
+    </div>
+
+    
+    <!-- {%if profile.profile_picture%}
+      <img src="{{profile.profile_picture.url}}" id="Avatar" width="150">
+      {%else%}
+      <div id="default-profile">
+        {{request.user.first_name|slice:"1"}}
+      </div>
+    {%endif%} -->
+
+    <div class="pic-center">
+    {%with profile=user.profile%}
+      {% if profile and profile.profile_picture %}
+        <img src="{{ profile.profile_picture.url }}" id="Avatar" width="150">
+      {% else %}
+        <div id="default-profile">
+          {{ user.first_name|default:user.email|slice:":1"|upper }}
+        </div>
+      {% endif %}
+    {%endwith%}
+    </div>
+    
+    <h3 class="profile-name text-center"> Welcome, {{request.user.first_name}}</h3>
+
+    <form method="post" enctype="multipart/form-data">
+      {% csrf_token %}
+  
+      <div class="name-wrap">
+        <div class="name-section">
+          <label>Email:</label>
+            {{ request.user.email }}
+        </div>
+        <div class="name-section">
+        </div>
+      </div>
+  
+  
+      <div class="name-wrap">
+  
+        <div class="name-section">
+          <label>Street 1:</label>
+          {{ profile_form.address_line_1 }}
+        </div>
+  
+        <div class="name-section">
+          <label>Street 2:</label>
+          {{profile_form.address_line_2}}
+        </div>
+  
+      </div>
+  
+  
+      <div class="name-wrap">
+  
+        <div class="name-section">
+          <label>City:</label>
+          {{ profile_form.city }}
+        </div>
+  
+        <div class="name-section">
+          <label>State:</label>
+          {{profile_form.state}}
+        </div>
+  
+      </div>
+  
+  
+      <div class="name-wrap">
+        <div class="name-section">
+          <label>Country:</label>
+          {{ profile_form.country }}
+        </div>
+        <div class="name-section">
+          <label>Zip Code:</label>
+          {{profile_form.zip_code}}
+        </div>
+      </div>
+  
+  
+      <div class="profile-pic">
+      <label>Profile Picture:</label>
+        <div>{{profile_form.profile_picture}}</div>
+      
+      </div>
+  
+  
+      <button class="edit-btn" name="profile_submit" type="submit">Update Info</button>
+    </form>
+
+  </div>
+</div>
+
+
+
+<div id="tab-password" class="tab-content">
+  <div class="profile-container">
+    <div class="tabs">
+      <button data-target="#tab-profile" class="tab-btn active">Profile</button>
+      <button data-target="#tab-password" class="tab-btn">Password</button>
+    </div>
+  <form class="password-form" method="post">
+    {% csrf_token %}
+    {{ password_form.as_p }}
+    <button name="password_submit" class="edit-btn">Change Password</button>
+  </form>
+  </div>
+</div>
+
+
+
+{%block js%}
+<script src="{% static 'js/tab.js' %}"></script>
+{%endblock%}
+
+{%endblock content%}

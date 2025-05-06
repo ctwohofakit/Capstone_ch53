@@ -40,7 +40,7 @@
 
   <div class="interview-section">
     {% for interview in interviews %}
-      <a href="{% url 'interview_detail' interview.pk %}" class="interview-card">
+      <a class="interview-card" href="{% url 'interview_detail' interview.pk %}" >
         {% if interview.category and interview.category.image %}
           <img src="{{ interview.category.image.url }}" alt="{{ interview.category.name }}">
         {% else %}
@@ -52,13 +52,13 @@
           {{ interview.created_by|date:"j F Y" }} 
            <label class="tag">{{ interview.question_type }}</label>
         </span>
-        <h4>{{ interview.company_name }}</h4>
-        <h3>{{ interview.wanted_role }}</h3>
+        <h4 class="company">{{ interview.company_name }}</h4>
+        <h3 class="role">{{ interview.wanted_role }}</h3>
 
         {% with first=interview.messages.all.1 %}
           {% if first %}
             <p class="preview">{{ first.content|truncatechars:100 }}…</p>
-            <p>REVIEW...</p>
+            <p class="review">Review Interview...</p>
           {% else %}
             <p class="preview">No conversation recorded.</p>
           {% endif %}
@@ -79,4 +79,6 @@
 
 </div>
 </div>
+
+
 {% endblock content %}

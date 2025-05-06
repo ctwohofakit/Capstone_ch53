@@ -1,11 +1,18 @@
 {%extends 'base.html'%}
-
 {%block title%}Log Out{%endblock title%}
+
+{%load static%}
+{% block css %}
+  <link rel="stylesheet" href="{% static 'css/login.css' %}">
+{% endblock css %}
 
 {%block content%}
 <div class="project-form">
-<h1>Log Out</h1>
-<p>You have successfully logged out!</p>
+    <div class="project-form-head">
+        <h2>Log Out</h2>
+    </div>
+    <p class="text-center">You have successfully logged out!</p>
+
 </div>
 
 

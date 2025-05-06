@@ -1,5 +1,5 @@
 :root{
-    --background-color:#000000;
+    --background-color:#0e0c15;
     --primary:#2bb4f3;
     --footer:#7c87f2;
     --link:#0ea3e6;
@@ -20,62 +20,132 @@ body{
     color:rgb(255, 255, 255);
 }
 
+.text-center{
+    text-align: center;
+}
+
 header{
-    top:0
+    position: fixed; 
+    top: 0;
+    left: 0;
+    width: 100%;
+    margin-top:0;
+    background: #212529;
+    padding: 0.6rem 0;
+    font-family: var(--DM-font);
 }
 
-.navbar{
-    z-index: 0 !important;
+.nav-container {
+    max-width: 100%;
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    padding:0 2rem 0 2rem;
 }
-.pre-icon{
-    width:5em;
+  
+.nav-left .logo img {
+    height: 20px;
 }
-.navbar-brand{
-    width:40%;
-    padding:0 0 0 5rem;
+  
+.nav-menu {
+    list-style: none;
+    display: flex;
+    gap: 2rem;
+    margin: 0;
+    padding: 0;
 }
-.center-row{
-    width:40%;
-    display:flex;
-    gap:2rem;
-    padding:0 5rem 0 5rem;
-}
-
-a{
+.nav-menu a {
+    color: #fff;
     text-decoration: none;
+    font-weight: 500;
+    padding: 0.5rem;
 }
-.nav{
-    color:white;
-}
-.nav:hover{
-    color:var(--nav);
-}
-.nav::after{
-    color:rgb(255, 255, 255);
+.nav-menu a:hover {
+    color: whitesmoke;
+    border-bottom:2px solid var(--primary); 
 }
 
-#nav-check,.nav-btn{
-    display: block;
+.nav-right {
+    display: flex;
+    align-items: center;
+    gap: 1rem;
 }
 
-.nav-btn label{
-    width:30px;
-    background-color: rgb(255, 255, 255);
-    height:2px;
-    margin:2px 0px;
+
+.nav-avatar {
+    width: 32px;
+    height: 32px;
+    border-radius: 50%;
+    object-fit: cover;
+}
+  
+
+.nav-avatar-default {
+    width: 32px;
+    height: 32px;
+    border-radius: 50%;
+    background: #624db0;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    color: #fff;
+    font-weight: bold;
+    text-transform: uppercase;
+}
+  
+.user-info {
+    display: flex;
+    align-items: center;
+    gap: 0.5rem;
+    position: relative;
     cursor: pointer;
 }
+/* .drop-container{
 
-#nav-check,
-.nav-btn {
-  display: none;
+    display: inline-block;
+
+} */
+.user-text {
+    display: flex;
+    flex-direction: column;
+    color: #fff;
+    font-size: 0.9rem;
+}
+.user-name {
+    font-weight: 600;
+}
+.user-email {
+    font-size: 0.8rem;
+    opacity: 0.8;
+}
+  
+.btn {
+    padding: 0.4rem 0.8rem;
+    text-decoration: none;
+    border-radius: 4px;
+    font-weight: 500;
+    font-size: 0.9rem;
 }
 
-.navbar-brand {
-  width: 40%;
-  padding-left: 5rem;
+.signup-btn {
+    background: transparent;
+    color: #fff;
+    border: 1px solid #fff;
 }
 
+.signup-btn:hover {
+    background: #fff;
+    color: #111;
+}
+
+.login-btn {
+    background: #fff;
+    color: #111;
+}
+.login-btn:hover {
+    background: #eee;
+}
+  
 .center-row {
   width: 40%;
   display: flex;
@@ -84,15 +154,65 @@ a{
   align-items: center;
 }
 
-.pre-icon {
-  width: 5em;
+
+.profile-btn,
+.profile-btn:hover{
+    color:none;
+    border:none;
+    text-decoration: none;
+    background-color: transparent;
+    outline: none;
 }
 
-.nav {
-  color: white;
+/* animation all pages */
+@keyframes slideIn {
+    0% {
+      transform: translateY(10px);
+    }
+    100% {
+      transform: translateY(0px);
+    }
+}
+
+.nav-dropdown {
+    display:none;
+    position:absolute;
+    right: 0;
+    top: 100%;                  
+    background: #222; 
+    border-radius: 0.5rem;
+    box-shadow: 0 4px 12px rgba(0,0,0,0.5);
+    min-width: 10rem;
+    padding: 1rem 0;
+    z-index: 50;
+}
+
+.user-info:hover .nav-dropdown {
+  display: block;
+}
+
+.nav-dropdown a,
+.nav-dropdown .dropdown-logout {
+  display: block;
+  width: 100%;
+  padding: 0.5rem 1rem;
+  color: #fff;
   text-decoration: none;
-}
-.nav:hover {
-  color: var(--nav);
+  text-align: left;
+  background: none;
+  border: none;
+  font-size: 0.9rem;
+  font-family: var(--DM-font);
+  overflow: hidden;
 }
 
+.nav-dropdown a:hover{
+  background: rgba(255,255,255,0.1);
+  width: 80%;
+}
+
+.dropdown-logout:hover {
+background: rgba(255,255,255,0.1);
+  cursor: pointer;
+  width: 100%;
+}

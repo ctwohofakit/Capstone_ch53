@@ -12,12 +12,13 @@
 } */
 
 /* Layout */
-.dashboard {
+.contact-dashboard {
     /* display: flex;
     background-color: #000000;
     min-height: 100vh;   100% of viewport height */
     display: flex;
     gap: 2rem;  
+    padding:2rem 0 0 0;
 }
 
 .sidebar-container {
@@ -26,7 +27,7 @@
 
 /* Sidebar */
 .sidebar {
-    margin-top: 4.5em;
+    margin-top: 7em;
     margin-left: 7em;
     width: 280px;          
     padding: 1rem;
@@ -69,17 +70,20 @@
 .contact {
     color: aliceblue;
     flex: 4;
-    padding: 1em 10% 1rem 10%;
+    padding: 1rem 10% 1rem 10%;
     text-align: center;
     animation: slideIn .8s linear;
 
 }
 
-.contact h2 {
+.contact-head h2 {
     display: inline-block; 
-    background: linear-gradient(65deg,#41ce8c,#647eff,#647eff, #7812fd);
-    background-clip: text;
-    color: transparent;
+    color: rgb(160, 160, 160);
+    font-size:2rem;
+}
+
+.contact-head p{
+    margin-top: 0;
 }
 
 .contact-form{
@@ -108,13 +112,38 @@
 }
 
 label{
+    margin-top:0.5rem;
     text-align: left;
+    
 }
 
 input,
 textarea{
-    border-radius: 0.5rem;
+    margin-top:0.5rem;
+    border-radius: 0.2rem;
     border: 0;
+    width:100%;
+    border-radius: 0.2rem;
+    color:whitesmoke;
+    background-color: #131111;
+    border-color: #624db0;
+}
+.contact-form hr{
+    border: none;
+    border-top:1px dashed #f0e9e9;
+    margin-top:1rem;
+    width:100%;
+}
+.contact-form input{
+    height: 30px;
+    width:100%;
+    margin-top:0.5rem;
+    border-radius: 0.2rem;
+    border: 0;
+    height: 2rem;
+    color:whitesmoke;
+    background-color: #131111;
+    border-color: #624db0;
 }
 
 .edit-btn{
@@ -137,3 +166,5 @@ textarea{
     box-shadow: 0 0px 5px rgba(255, 255, 255, 0.918);
 
 }
+
+

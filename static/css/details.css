@@ -12,18 +12,33 @@
 } */
 
 .detail-head{
-    margin-top: 2rem;
+    margin-top: 5em;
     text-align: center;
-    padding: 0 2% 0 2%;
+    padding: 0 2% 
+    0 2%;
 }
+
 .detail-head h2{
     display: inline-block; 
     background: var(--grad);
     background-clip: text;
     color: transparent;
+    margin-top: 0;
 }
 
+.detail-head p{
+    margin-top: 0;
+}
 
+hr{
+    border: none;
+    border-top:1px dashed #f0e9e9;
+    margin-top:2rem;
+    width:80%;
+}
+.chat-his-head{
+    margin-bottom: 0;
+}
 .chat-history{
     padding: 1% 10% 2% 10%;
     font-size: 16px;
