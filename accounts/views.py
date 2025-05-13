@@ -47,8 +47,8 @@ def profile_view(request):
             else:
                 messages.error(request, "Password update failed. Please try again.")
     else:
-        password_form=PasswordChangeForm(request.user)
-        profile_form=ProfileForm(instance=profile)
+        profile_form  = ProfileForm(instance=profile)
+        password_form = PasswordChangeForm(request.user)
 
     return render(request,"accounts/profile.html",{
         "profile_form":profile_form,

@@ -31,10 +31,10 @@ class AccountSignupForm(UserCreationForm):
             "placeholder":"Password",
         })
     )
-    password2=forms.CharField(
+    password2 = forms.CharField(
         widget=forms.PasswordInput(attrs={
-            "class":"contact-input",
-            "placeholder":"Password",
+            "class": "contact-input",
+            "placeholder": "Confirm password",
         })
     )
 
@@ -62,7 +62,8 @@ class ProfileForm(forms.ModelForm):
             })
         }
 
-class ProfilePic(forms.ModelForm):
+class ProfilePicForm(forms.ModelForm):
     class Meta:
-        mdoel=UserProfile
+        model  = UserProfile         
+        fields = ["profile_picture"]
         
