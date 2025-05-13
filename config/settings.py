@@ -115,20 +115,14 @@ WSGI_APPLICATION = 'config.wsgi.application'
 # https://docs.djangoproject.com/en/5.2/ref/settings/#databases
 
 
-DATABASES = {
-    "default": {
-        "ENGINE": "django.db.backends.sqlite3",
-        "NAME": BASE_DIR / "db.sqlite3",
-    }
-}
 
-# If Heroku has set DATABASE_URL, use Postgres
-if os.getenv("DATABASE_URL"):
-    DATABASES["default"] = dj_database_url.config(
-        default=os.environ["DATABASE_URL"],
+DATABASES = {
+    "default": dj_database_url.config(
+        default=f"sqlite:///{BASE_DIR / 'db.sqlite3'}",
         conn_max_age=600,
-        ssl_require=True,
+        ssl_require=True
     )
+}
 
 # Password validation
 # https://docs.djangoproject.com/en/5.2/ref/settings/#auth-password-validators
@@ -188,17 +182,17 @@ LOGIN_REDIRECT_URL = '/'
 
 
 AUTH_USER_MODEL="accounts.Account"
-SOCIALACCOUNT_PROVIDERS = {
-    'google': {
-        'SCOPE': [
-            'profile',
-            'email',
-        ],
-        'AUTH_PARAMS': {
-            'access_type': 'online',
-        },
-    }
-}
+# SOCIALACCOUNT_PROVIDERS = {
+#     'google': {
+#         'SCOPE': [
+#             'profile',
+#             'email',
+#         ],
+#         'AUTH_PARAMS': {
+#             'access_type': 'online',
+#         },
+#     }
+# }
 
 # ACCOUNT_USER_MODEL_USERNAME_FIELD = None
 # ACCOUNT_LOGIN_METHODS   = ["email"]
