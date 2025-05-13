@@ -1,13 +1,37 @@
+from django.contrib.auth.base_user import BaseUserManager
 from django.db import models
 from django.contrib.auth.models import AbstractUser
 from django.conf import settings
 
+class AccountManager(BaseUserManager):
+    use_in_migrations = True
+
+    def _create_user(self, email, password, **extra_fields):
+        if not email:
+            raise ValueError("The Email field is required")
+        email = self.normalize_email(email)
+        # If you still have a username column, default it to the email
+        extra_fields.setdefault("username", email)
+        user = self.model(email=email, **extra_fields)
+        user.set_password(password)
+        user.save(using=self._db)
+        return user
+
+    def create_user(self, email, password=None, **extra_fields):
+        extra_fields.setdefault("is_superuser", False)
+        return self._create_user(email, password, **extra_fields)
+
+    def create_superuser(self, email, password=None, **extra_fields):
+        extra_fields.setdefault("is_staff",   True)
+        extra_fields.setdefault("is_superuser",True)
+        return self._create_user(email, password, **extra_fields)
 
 class Account(AbstractUser):
     email=models.EmailField("email address", unique=True, blank=False)
     USERNAME_FIELD="email"
     REQUIRED_FIELDS=[] 
 
+    objects = AccountManager()
     #auto assign username
     def save(self, *args, **kwargs):
         if not self.username:

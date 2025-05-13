@@ -23,16 +23,7 @@
                 <br>
                 <input type="submit" class="edit-btn" value="Log In">
             </form>
-            {% load socialaccount %}
 
-            <!-- <p>Foget password?</p> -->
-
-            <hr>
-            <div >
-            <a class="google-btn" href='{% provider_login_url "google" process="login" %}'>
-             Log in with Google
-            </a>
-            </div>
             <div class="sign-btn">
             <p>Don't have an account? <a href="{% url 'signup' %}"> Sign Up </a>
             </p>

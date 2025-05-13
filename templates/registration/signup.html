@@ -45,12 +45,8 @@
     </form>
 
     <hr>
-    <div>
-    {% load socialaccount %}
-    <a class="google-btn" href="{% provider_login_url 'google' process='signup' %}">
-     Sign up with Google
-    </a>
-    </div>
+
+
     <div class="sign-btn">
     <p>Already have an account? <a href="{% url 'login' %}"> Login </a>
     </p>

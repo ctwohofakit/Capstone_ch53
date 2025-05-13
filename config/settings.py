@@ -15,7 +15,9 @@ import os
 import openai
 import certifi
 import environ
+import dj_database_url
 from environs import Env
+
 
 
 load_dotenv()
@@ -54,8 +56,8 @@ INSTALLED_APPS = [
     'django.contrib.contenttypes',
     'django.contrib.sessions',
     'django.contrib.messages',
-    'django.contrib.staticfiles',
     "whitenoise.runserver_nostatic",
+    'django.contrib.staticfiles',
 
     #app
     'pages',
@@ -63,11 +65,11 @@ INSTALLED_APPS = [
     'accounts',
 
     #allauth
-    "django.contrib.sites",
-    "allauth",
-    "allauth.account",
-    "allauth.socialaccount",
-    "allauth.socialaccount.providers.google",
+    # "django.contrib.sites",
+    # "allauth",
+    # "allauth.account",
+    # "allauth.socialaccount",
+    # "allauth.socialaccount.providers.google",
 ]
 
 
@@ -76,14 +78,15 @@ SITE_ID = 1
 
 MIDDLEWARE = [
     'django.middleware.security.SecurityMiddleware',
+    "whitenoise.middleware.WhiteNoiseMiddleware",
     'django.contrib.sessions.middleware.SessionMiddleware',
     'django.middleware.common.CommonMiddleware',
     'django.middleware.csrf.CsrfViewMiddleware',
     'django.contrib.auth.middleware.AuthenticationMiddleware',
     'django.contrib.messages.middleware.MessageMiddleware',
     'django.middleware.clickjacking.XFrameOptionsMiddleware',
-    'allauth.account.middleware.AccountMiddleware',
-    "whitenoise.middleware.WhiteNoiseMiddleware",
+    # 'allauth.account.middleware.AccountMiddleware',
+
 ]
 
 
@@ -189,20 +192,20 @@ SOCIALACCOUNT_PROVIDERS = {
     }
 }
 
-ACCOUNT_USER_MODEL_USERNAME_FIELD = None
-ACCOUNT_LOGIN_METHODS   = ["email"]
-ACCOUNT_SIGNUP_FIELDS   = ["email*", "password1*", "password2*"]
-ACCOUNT_EMAIL_VERIFICATION = 'none'
+# ACCOUNT_USER_MODEL_USERNAME_FIELD = None
+# ACCOUNT_LOGIN_METHODS   = ["email"]
+# ACCOUNT_SIGNUP_FIELDS   = ["email*", "password1*", "password2*"]
+# ACCOUNT_EMAIL_VERIFICATION = 'none'
 
 AUTHENTICATION_BACKENDS = [
     "django.contrib.auth.backends.ModelBackend",           
-    "allauth.account.auth_backends.AuthenticationBackend", 
+    # "allauth.account.auth_backends.AuthenticationBackend", 
 ]
 LOGIN_REDIRECT_URL="/"
 LOGOUT_REDIRECT_URL="/"
 
-SOCIALACCOUNT_LOGIN_ON_GET=True
-ACCOUNT_LOGIN_ON_EMAIL_CONFIRMATION = True
+# SOCIALACCOUNT_LOGIN_ON_GET=True
+# ACCOUNT_LOGIN_ON_EMAIL_CONFIRMATION = True
 
 STORAGES = {
   'default': {
