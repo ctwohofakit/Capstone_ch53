@@ -1,8 +1,355 @@
 {%extends "base.html"%}
 {%block title%}Home{%endblock title%}
+
 {%load static%}
+{% block css %}
+<link rel="stylesheet"href="{% static 'css/default.css' %}">
+<link rel="stylesheet"href="{% static 'css/responsive.css' %}">
+{% endblock css %}
+
+
 {%block content%}
-<h1>Hello, world</h1>
+
+<div class="hero-section">
+    <img class="bg" src="/static/img/hero-section-bg.png">
+    <div class="hero-content">
+      <h1 >Practice Your Last Round With</h1>
+      <div class="verticalflip">
+        <span class="testh1">AI Interview</span>
+        <span class="testh1">On Your Time</span>
+        <span class="testh1">Technical</span>
+      </div>
+
+      <br>
+      <p>Bring your confidence with you with tested knowledge</p>
+      <p>Opportunity favors those who are prepared.</p>
+      <div class="button-set">
+        <a href="{% url 'signup' %}" class="cta-button">Get Started</a>
+      </div>
+
+    <div class="wrapper">
+        <div class="card bg1"></div>
+        <div class="card bg2"></div>
+        <div class="card bg3"></div>
+    </div>
+</div>
+</div>
+
+
+<br>
+
+<div class="content-a">
+    <span>Over <h1 class="contenta-h1 block">40,999+ </h1> Comapnies to Practice interviews with:</span>
+
+    <div class="home-icon-set">
+        <img src="{%static '/img/pinterest.png' %}">
+        <img src="{%static '/img/shopify.png' %}">
+        <img src="{%static '/img/meta.png' %}">
+        <img src="{%static '/img/google1.png' %}">
+        <img src="{%static '/img/pinterest.png' %}">
+        <img src="{%static '/img/shopify.png' %}">
+        <img src="{%static '/img/meta.png' %}">
+        <img src="{%static '/img/google1.png' %}">
+        <img src="{%static '/img/pinterest.png' %}">
+        <img src="{%static '/img/shopify.png' %}">
+        <img src="{%static '/img/meta.png' %}">
+        
+    </div>
+</div>
+
+
+
+<div class="contentb block">
+    <h2>App's Feature</h2>
+    <span>Adaptive Question Flow </span><span>AI Powered <h1 class="contentb-h1">Online Interviewer</h1></span>
+
+    <div class="circle-cards block">
+    <div class="work-process-card">
+        <div class="work-process-card_icon"><img class="icon" src="{% static 'img/idea.png'%}"></div>
+        <h4 class="text-light">Vision AI</h4>
+        <p>Test with the knowledge from internet, so you get used to think of your technical interview</p>
+    </div>
+    <div class="work-process-card">
+        <div class="work-process-card_icon"><img class="icon" src="{% static 'img/hour.png'%}"></div>
+        <h4 class="text-light">Flexible 24/7</h4>
+        <p>No more coordinating calendars with a human coach—start a new mock interview anytime, anywhere, from your browser or phone</p>
+    </div>
+    <div class="work-process-card">
+        <div class="work-process-card_icon"><img class="icon" src="{% static 'img/star.png'%}"></div>
+        <h4 class="text-light">Behavioral Question Bank</h4>
+        <p> Review your feedback report and get tips on top of your AI’s analysis for truly well-rounded prep.</p>
+    </div>
+    <div class="work-process-card">
+        <div class="work-process-card_icon"><img class="icon" src="{% static 'img/talk.png'%}"></div>
+        <h4 class="text-light">Text-base mode</h4>
+        <p>you have time to think of your answer always.</p>
+    </div>
+    </div>
+</div>
+
+
+
+<div class="contentc" id="features">
+<a href="#features" id="features"></a>
+
+    <img class="bg" src="/static/img/right.png">
+    <span> Any Skills Interview <h1 class="contentb-h1 block">with Prepoint AI</h1></span><span>Transforming Career Today! </span>
+
+    <p class="contentc-text">The system analyzes your answer on the fly and tailors follow-up questions to dig deeper on your strengths—or probe areas you need to improve—just like a live interviewer would.</p>
+
+    <div class="contentc-cards block">
+    <div class="contentc-process-card block">
+        <div class="contentc-process"><img src="{% static 'img/contentc-human.png'%}"></div>
+        <h3 class="text-light">Role Based Customization</h3>
+        <p>Dive into your target role, and it will generat questions focus to that job, industry.</p>
+    </div>
+    <div class="contentc-process-card block">
+        <div class="contentc-process"><img src="{% static 'img/contentc-clock.png'%}"></div>
+        <h3 class="text-light">Instant Feedback Report</h3>
+        <p>Receive a breakdown of your performance: clarity of your explanations, technical accuracy.</p>
+    </div>
+    <div class="contentc-process-card block">
+        <div class="contentc-process"><img src="{% static 'img/contentc-setting.png'%}"></div>
+        <h3 class="text-light">Progress Tracking</h3>
+        <p>Track your “interview score” over time and watch your confidence grow session by session.</p>
+    </div>
+    <div class="contentc-process-card block">
+        <div class="contentc-process"><img src="{% static 'img/contentc-speak.png'%}"></div>
+        <h3 class="text-light">Full Conversation Playback</h3>
+        <p>Catch nuances in your tone, phrasing, and content that you might otherwise miss.</p>
+    </div>
+    <div class="contentc-process-card block">
+        <div class="contentc-process"><img src="{% static 'img/contentc-stars.png'%}"></div>
+        <h3 class="text-light">Difficulty Calibration</h3>
+        <p>dynamically adjusts question complexity in real time based on how well you’re answering. </p>
+    </div>
+    <div class="contentc-process-card block">
+        <div class="contentc-process"><img src="{% static 'img/contentc-stat.png'%}"></div>
+        <h3 class="text-light">Session Transcript</h3>
+        <p>Every mock interview comes with a fully time-stamped transcript plus an AI-generated suggestion.</p>
+    </div>
+
+    </div>
+</div>
+
+<br>
+
+<div class="contentd block">
+    <span> Use With <h1 class="contentb-h1 block">Confidence!</h1></span>
+
+    <p class="contentd-text block">Are you the 53% that know the job? Preparation over planning! Gain more Opportunity when you are prepared!</p>
+
+    <div class="contentd-text-container block">
+        <div class="contentd-text-card">
+            <h1 class="contentb-h1">2-4 Candidates</h1>
+            <h2>Make it to Final Round</h2>
+        </div>
+        <div class="contentd-text-card">
+            <h1 class="contentb-h1">53% Candidates</h1>
+            <h2>Pass the interivew</h2>
+        </div>
+    </div>
+</div>
+
+<div class="marquee__track">
+    <div class="marquee__grid"> 
+    <!-- <div class="contentd-tests-group"> -->
+        <div class="contentd-test-card">
+            <div class="contentd-test-top">
+                <img class="people-icon" src="{%static 'img/people1.jpg'%}"><h3 class="people-name">Fiano Jackson</h3>
+            </div>
+            <p>“I was blown away by how realistic the questions felt. The voice-based interviewer made it so much easier to practice my timing and tone before the real thing!”</p>
+        </div>
+        <div class="contentd-test-card">
+            <div class="contentd-test-top">
+                <img class="people-icon" src="{%static 'img/people2.jpg'%}"><h3 class="people-name">Amy Chen</h3>
+            </div>
+            <p>“I used to get tongue-tied in actual interviews—this app’s instant feedback helped me organize my thoughts and answer with confidence.”</p>
+        </div>
+        <div class="contentd-test-card">
+            <div class="contentd-test-top">
+                <img class="people-icon" src="{%static 'img/people3.jpg'%}"><h3 class="people-name">Nick Thompson</h3>
+            </div>
+            <p>“The follow-up questions adapt to my answers, just like a human interviewer would. It sharpened my problem-solving skills under pressure.”</p>
+        </div>
+        <div class="contentd-test-card">
+            <div class="contentd-test-top">
+                <img class="people-icon" src="{%static 'img/people4.jpg'%}"><h3 class="people-name">Grace McLean</h3>
+            </div>
+            <p>“Love that I can pause, review my responses, and then continue. It’s like having an interview coach in my pocket.”</p>
+        </div>
+        <div class="contentd-test-card">
+            <div class="contentd-test-top">
+                <img class="people-icon" src="{%static 'img/people5.jpg'%}"><h3 class="people-name">Dainel Francis</h3>
+            </div>
+            <p>“The detailed end-of-session report showed me exactly where to improve—technical depth, communication, even my filler words!”</p>
+        </div>
+        <div class="contentd-test-card">
+            <div class="contentd-test-top">
+                <img class="people-icon" src="{%static 'img/people6.jpg'%}"><h3 class="people-name">Dorothy Leer</h3>
+            </div>
+            <p>“Practicing at home in my pajamas has never felt more productive—now I nail every behavioral question in real interviews.”</p>
+        </div>
+        <div class="contentd-test-card">
+            <div class="contentd-test-top">
+                <img class="people-icon" src="{%static 'img/people7.jpg'%}"><h3 class="people-name">Issabela Coddington</h3>
+            </div>
+            <p>“The AI’s tone is friendly but professional, which keeps me calm. I recommend it to anyone who hates awkward mock interviews.”</p>
+        </div>
+        <div class="contentd-test-card">
+            <div class="contentd-test-top">
+                <img class="people-icon" src="{%static 'img/people8.jpg'%}"><h3 class="people-name">KaChong Xu</h3>
+            </div>
+            <p>“I saw a noticeable boost in my confidence after just three sessions. My last on-site interview went flawlessly!”</p>
+        </div>
+        <div class="contentd-test-card">
+            <div class="contentd-test-top">
+                <img class="people-icon" src="{%static 'img/people1.jpg'%}"><h3 class="people-name">Fiano Jackson</h3>
+            </div>
+            <p>“Having the ability to replay both sides of the conversation was a game-changer for spotting areas I needed to polish.”</p>
+        </div>
+        <div class="contentd-test-card">
+            <div class="contentd-test-top">
+                <img class="people-icon" src="{%static 'img/people2.jpg'%}"><h3 class="people-name">Amy Chen</h3>
+            </div>
+            <p>“This app is the perfect prep tool—quick, convenient, and tailored to the exact role I’m interviewing for.”</p>
+        </div>
+        <div class="contentd-test-card">
+            <div class="contentd-test-top">
+                <img class="people-icon" src="{%static 'img/people3.jpg'%}"><h3 class="people-name">Nick Thompson</h3>
+            </div>
+            <p>“The AI’s real-time guidance on structuring my answers was invaluable. I walked into my final round feeling prepared and composed.”</p>
+        </div>
+<!-- 
+    </div> -->
+    </div>
+</div>
+
+
+<div class="contentd" id="FAQs">
+<a href="#FAQs" id="FAQs">
+</a>
+    <p class="contentd-top">Frequesntly Asked Questions</p>
+    <span>How to Use <h1 class="contentb-h1"> AI to Practice</h1> Interview?</h1></span>
+
+    <section class="block">
+        <div class="container">
+            <div class="accordion">
+                <div class="acoordion-item" id="question1">
+                    <a class="accordion-link" href="#question1" id="question1">
+                        Can I re-do the interview that I already took?
+                        <img src="{%static '/img/dropdown.svg'%}">
+                    </a>
+                    <div class="answer">
+                        <p>
+                        Yes, there is a re-take button. it will allow you to re-do the same interview again.
+                        </p>
+                    </div>
+                </div>
+                <div class="acoordion-item" id="question2">
+                    <a class="accordion-link" href="#question2" id="question2">
+                        Is all the interview quesitons technical?
+                        <img src="{%static '/img/dropdown.svg'%}">
+                    </a>
+                    <div class="answer">
+                        <p>
+                        No, you can choose to select technical questions or non- technical questions for general interivew.
+                        </p>
+                    </div>
+                </div>
+                <div class="acoordion-item" id="question3">
+                    <a class="accordion-link" href="#question3" id="question3">
+                        Can I target What company I want to interview for?
+                        <img src="{%static '/img/dropdown.svg'%}">
+                    </a>
+                    <div class="answer">                        
+                        <p>
+                        Yes, you can type in waht comapny you are interivewing for.
+                        </p>
+                    </div>
+                </div>
+                <div class="acoordion-item" id="question4">
+                    <a class="accordion-link" href="#question4" id="question4">
+                        Will my past interview history save?
+                        <img src="{%static '/img/dropdown.svg'%}">
+                    </a>
+                    <div class="answer">
+                        <p>
+                        Yes, but it only save for you to re-visit and reivew the interivew question, you can alwasys delete them if you don't feel like you need it anymore.
+                        </p>
+                    </div>
+                </div>
+                <div class="acoordion-item" id="question5">
+                    <a class="accordion-link" href="#question5" id="question5">
+                        How can I start?
+                        <img src="{%static '/img/dropdown.svg'%}">
+                    </a>
+                    <div class="answer">
+                        <p>
+                        You can signup from the signup portal, as soon as you signup, you can login ans start using it.
+                        </p>
+                    </div>
+                </div>
+                <div class="acoordion-item" id="question6">
+                    <a class="accordion-link" href="#question6" id="question6">
+                        What if I want to delete my account?
+                        <img src="{%static '/img/dropdown.svg'%}">
+                    </a>
+                    <div class="answer">
+                        <p>
+                        You can always do that within your profile setting.
+                        </p>
+                    </div>
+                </div>
+                <div class="acoordion-item" id="question7">
+                    <a class="accordion-link" href="#question7" id="question7">
+                        What if I have questions?
+                        <img src="{%static '/img/dropdown.svg'%}">
+                    </a>
+                    <div class="answer">
+                        <p>
+                        You can contact us from "Contact" Page.
+                        </p>
+                    </div>
+                </div>
+               
+                </div>
+        
+        </div>
+    </section>
+</div>
+
+
+<div class="contente block">
+    <img class="bg" src="/static/img/hero-section-bg.png">
+    <span class="block"><h1 class="contentb-h1 block">Start Your Interview Prep</h1> Here</span>
+    <h1 class="block">with Prep Point</h1>
+    <p class="contente-top block">Turn your dream job to reality today!</p>
+    <a href="{% url 'signup' %}" class="cta-button">Get Started</a>
+</div>
+<br>
+<br>
+<footer>
+    <p>Pre Point @ All rights reserved</p>
+    <div class="footer-center">
+        <div class="socialmedia">
+            <a class="socialmedia-a">in</a>
+            <a class="socialmedia-a">youtube</a>
+            <a class="socialmedia-a">tiktok</a>
+  
+        </div>
+    </div>
+    <div class="right-footer">
+        <a href="#">Terms of Service</a>
+        <a href="#">Privacy</a>
+    </div>
+  
+  </footer>
+
+
+
+
+
 
 {%block js%}
 <script src="{% static 'js/home.js' %}"></script>

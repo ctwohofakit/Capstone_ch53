@@ -11,9 +11,9 @@
   <div class="detail-head">
     <h4>{{ interview.company_name }}</h4>
     <h2>Interview for {{ interview.wanted_role }} </h2>
-    <p><strong>Type:</strong> {{ interview.question_type }}</p>
-    <p><strong>Technology:</strong> {{ interview.technology }}</p>
-    <p><small>Started on {{ interview.created_by|date:"F j, Y, g:i a" }}</small></p>
+    <p class="detail-head-p"><strong>Type:</strong> {{ interview.question_type }}</p>
+    <p class="detail-head-p"><strong>Technology:</strong> {{ interview.technology }}</p>
+    <p class="detail-head-p"><small>Started on {{ interview.created_by|date:"F j, Y, g:i a" }}</small></p>
 
   <div class="actions">
     <a href="{% url 'redo' interview.pk %}">

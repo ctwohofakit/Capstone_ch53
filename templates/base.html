@@ -22,14 +22,14 @@
   <div class="nav-container">
     <div class="nav-left">
       <a href="{% url 'home' %}" class="logo">
-        <img src="{% static 'img/prepoint.png' %}" alt="Prep Point">
+        <img src="{% static 'img/prepoint.png' %}">
       </a>
     </div>
 
   <ul class="nav-menu">
     <li><a href="{% url 'home' %}">Home</a></li>
-    <li><a href="#">Features</a></li>
-    <li><a href="#">FAQs</a></li>
+    <li><a href="{% url 'home' %}#features">Features</a></li>
+    <li><a href="{% url 'home' %}#FAQs">FAQs</a></li>
     <li><a href="{% url 'interview_list' %}">Dashboard</a></li>
     <li><a href="{% url 'contact' %}">Contact</a></li>
   </ul>
@@ -70,6 +70,7 @@
     </div>
   </div>
 </header>
+
 
 
   <div>

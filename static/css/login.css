@@ -37,6 +37,10 @@
     /* animation: slideIn .8s linear; */
 }
 
+.project-inner label{
+    font-size: 18px;
+}
+
 .project-inner input, 
 .project-inner textarea{
     margin-top: 0.5rem;
@@ -56,6 +60,7 @@
 }
 
 .edit-btn{
+    font-size: 18px;
     width: 100%;
     padding-top:0.3rem;
     text-align: center;
@@ -65,7 +70,7 @@
     background: var(--button);
     color: white;
     cursor: pointer;
-    font-size: 16px;
+
 }
 
 .google-btn:hover,
@@ -129,10 +134,12 @@
 
 .name-section label{
     text-align: left !important;
+    font-size: 18px;
 }
 
 .name-section input,
 .name-full input{
+
     margin-top:0.5rem;
     border-radius: 0.2rem;
     border: 0;
@@ -154,6 +161,7 @@ hr{
     margin-bottom: 1rem;
 }
 .google-btn{
+    font-size: 18px;
     width: 100%;
     /* text-align: center; */
     height: 35px;
@@ -162,7 +170,6 @@ hr{
     background: var(--error);
     color: white;
     cursor: pointer;
-    font-size: 16px;
     display: flex;
     justify-content: center;
     align-items: center;
@@ -170,13 +177,17 @@ hr{
     color: whitesmoke;
 }
 .google-btn a{
+    font-size: 18px;
     display: block;
     text-decoration: none;
     color: whitesmoke;
 }
 
-
+.sign-btn P{
+    font-size: 20px;
+}
 .sign-btn a{
+    font-size: 20px;
     text-decoration: none;
     color: rgb(61, 107, 233);
 }

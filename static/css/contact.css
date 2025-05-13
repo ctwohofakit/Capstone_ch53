@@ -52,19 +52,37 @@
     border-radius: 0.5rem;
     box-shadow: 0 4px 12px rgba(0,0,0,0.5);
 }
+.contact-top{
+    display: flex;
+    justify-content: flex-start;
+    align-items: center;
+    gap:2rem;
+}
+.contact-card svg{
+    fill: #624db0;
+    display: inline-block;
+    width:28px;
+}
+.contact-card h5{
+    display: inline-block;
+}
 
+.contact-card p{
+    font-size: 18px;
+
+}
 .contact-card:hover{
     animation: slideIn .6s linear;
 }
 
-@keyframes slideIn {
+/* @keyframes slideIn {
     0% {
       transform: translateY(10px);
     }
     100% {
       transform: translateY(0px);
     }
-}
+} */
 
 /* Main content */
 .contact {
@@ -84,9 +102,11 @@
 
 .contact-head p{
     margin-top: 0;
+    font-size: 23px;
 }
 
 .contact-form{
+    font-size: 18px;
     display: flex;
     flex-direction: column;
     padding:3rem;

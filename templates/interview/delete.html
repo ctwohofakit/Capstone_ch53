@@ -3,6 +3,11 @@
 {% block title %}
   Delete {{ interview.wanted_role }}
 {% endblock title %}
+{%load static%}
+{% block css %}
+  <link rel="stylesheet" href="{% static 'css/delete.css' %}">
+{% endblock css %}
+
 
 {% block content %}
 <div class="delete-form">
@@ -14,10 +19,12 @@
   </p>
   <form method="post">
     {% csrf_token %}
+    <div class="delete-button-set">
     <button type="submit" class="submit-button">Confirm</button>
     <a href="{% url 'interview_list' %}">
       <button type="button" class="cancel-button">Cancel</button>
     </a>
+    </div>
   </form>
 </div>
 {% endblock content %}

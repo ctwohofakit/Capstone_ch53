@@ -30,6 +30,7 @@ a{
     overflow: hidden;
     background: #16181e;
     color:rgb(207, 206, 206);
+    padding-bottom: 0.3rem;
 }
 .interview-card:before {
     content: '';

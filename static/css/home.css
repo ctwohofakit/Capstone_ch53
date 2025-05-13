@@ -1,5 +1,5 @@
 :root{
-    --background-color:#0e0c15;
+    --background-color:#0c0a11;
     --primary:#2bb4f3;
     --footer:#7c87f2;
     --link:#0ea3e6;
@@ -7,19 +7,37 @@
     --error:#f170b1;
     --nav:#21da83;
     --button:linear-gradient(120deg, #939dfb 0%, #575af5 100%);
-    --grad:linear-gradient(65deg,#41ce8c, #647eff,#647eff,#c2ccff);
-    --DM-font:font-family: "Inter",sans-serif;
+    --grad:linear-gradient(60deg,#f87c6b,#647eff, #7812fd);
+    --DM-font: Satoshi,sans-serif;
+    --mouse-x: 0deg;
+    --mouse-y: 0deg;
+      --rotation: calc(15deg - (var(--mouse-y) / 100) + (var(--mouse-x) / 150));
+}
+
+html{
+    overflow-x: hidden;
+    margin: 0;
+    padding: 0;
 }
 
 body{
     background-color: var(--background-color);
-    background-image: url("/static/img/pattern.png");
-    background-repeat: repeat;       
-    background-position: center center; 
-    background-size: cover;  
+    /* background-image: url("/static/img/pattern.png"); */
+    /* background-repeat: repeat;       
+    background-position: center center;  */
+    /* background-size: cover;   */
     color:rgb(255, 255, 255);
+    overflow-x: hidden;
+    font-family: var(--DM-font);
 }
-
+@keyframes slideIn {
+    0% {
+      transform: translateY(10px);
+    }
+    100% {
+      transform: translateY(0px);
+    }
+}
 .text-center{
     text-align: center;
 }
@@ -33,6 +51,7 @@ header{
     background: #212529;
     padding: 0.6rem 0;
     font-family: var(--DM-font);
+    z-index: 50;
 }
 
 .nav-container {
@@ -216,3 +235,4 @@ background: rgba(255,255,255,0.1);
   cursor: pointer;
   width: 100%;
 }
+

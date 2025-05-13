@@ -20,14 +20,16 @@
 
 .detail-head h2{
     display: inline-block; 
-    background: var(--grad);
+    background: linear-gradient(120deg,#41ce8c, #647eff,#647eff);
     background-clip: text;
     color: transparent;
     margin-top: 0;
+    font-size: 26px;
 }
 
-.detail-head p{
+.detail-head-p, strong, small{
     margin-top: 0;
+    font-size:18px;
 }
 
 hr{
@@ -40,8 +42,11 @@ hr{
     margin-bottom: 0;
 }
 .chat-history{
+    width:80%;
     padding: 1% 10% 2% 10%;
-    font-size: 16px;
+    font-size: 18px;
+    color: #929090;;
+
 }
 /* .chat-history p{
     margin-left: 4rem;
@@ -49,10 +54,12 @@ hr{
 
 .interviewer{
     color: #63fab4;
+    font-size: 18px;
 }
 
 .user{
     color: var(--footer);
+    font-size: 18px;
 }
 
 .actions{
@@ -63,7 +70,7 @@ hr{
 
 
 .del-btn{
-    width: 300px;
+    width: 20rem;
     padding-top:0.3rem;
     text-align: center;
     height: 40px;
@@ -76,7 +83,7 @@ hr{
 }
 
 .edit-btn{
-    width: 300px;
+    width: 20rem;
     padding-top:0.3rem;
     text-align: center;
     height: 40px;
