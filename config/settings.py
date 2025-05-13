@@ -72,7 +72,7 @@ INSTALLED_APPS = [
 
 
 #suppose to use 1, but there was prefine site, example.com 2
-SITE_ID = 2
+SITE_ID = 1
 
 MIDDLEWARE = [
     'django.middleware.security.SecurityMiddleware',
