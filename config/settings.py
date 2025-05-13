@@ -15,13 +15,14 @@ import os
 import openai
 import certifi
 import environ
+from environs import Env
 
 
 load_dotenv()
 os.environ["SSL_CERT_FILE"]=certifi.where()
 #load env file
-env = environ.Env()
-environ.Env.read_env()
+env = Env()
+env.read_env()
 
 
 
@@ -33,15 +34,16 @@ BASE_DIR = Path(__file__).resolve().parent.parent
 # See https://docs.djangoproject.com/en/5.2/howto/deployment/checklist/
 
 # SECURITY WARNING: keep the secret key used in production secret!
-SECRET_KEY = os.getenv("SECRET_KEY")
-RECAPTCHA_SECRET_KEY =os.getenv("RECAPTCHA_SECRET_KEY")
+SECRET_KEY = env.str("SECRET_KEY")
+RECAPTCHA_SECRET_KEY =env.str("RECAPTCHA_SECRET_KEY")
 
 
 # SECURITY WARNING: don't run with debug turned on in production!
-DEBUG = True
+DEBUG = env.bool("DEBUG", default=False)
 
-ALLOWED_HOSTS = []
-OPENAI_API_KEY = os.getenv("OPENAI_API_KEY")
+
+ALLOWED_HOSTS = ["127.0.0.1","localhost",".herokuapp.com"]
+OPENAI_API_KEY = env.str("OPENAI_API_KEY")
 
 # Application definition
 
@@ -52,7 +54,7 @@ INSTALLED_APPS = [
     'django.contrib.sessions',
     'django.contrib.messages',
     'django.contrib.staticfiles',
-
+    "whitenoise.runserver_nostatic",
 
     #app
     'pages',
@@ -80,9 +82,15 @@ MIDDLEWARE = [
     'django.contrib.messages.middleware.MessageMiddleware',
     'django.middleware.clickjacking.XFrameOptionsMiddleware',
     'allauth.account.middleware.AccountMiddleware',
+    "whitenoise.middleware.WhiteNoiseMiddleware",
 ]
 
-
+STORAGES = {
+    # ...
+    "staticfiles": {
+        "BACKEND": "whitenoise.storage.CompressedManifestStaticFilesStorage",
+    },
+}
 
 ROOT_URLCONF = 'config.urls'
 
