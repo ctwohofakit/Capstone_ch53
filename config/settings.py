@@ -45,7 +45,7 @@ RECAPTCHA_SECRET_KEY =env.str("RECAPTCHA_SECRET_KEY")
 DEBUG = env.bool("DEBUG", default=False)
 
 
-ALLOWED_HOSTS = ["127.0.0.1","localhost",".herokuapp.com"]
+ALLOWED_HOSTS = ["127.0.0.1","localhost",".herokuapp.com","preppoint.us","www.preppoint.us",]
 OPENAI_API_KEY = env.str("OPENAI_API_KEY")
 
 # Application definition
