@@ -41,10 +41,10 @@
   <div class="interview-section">
     {% for interview in interviews %}
       <a class="interview-card" href="{% url 'interview_detail' interview.pk %}" >
-        {% if interview.category and interview.category.image %}
-          <img src="{{ interview.category.image.url }}" alt="{{ interview.category.name }}">
+        {% if interview.category %}
+          <img src="{%static 'category_images/'%}{{ interview.category.name|slugify}}.png"alt="{{ interview.category.name }}"">
         {% else %}
-          <img src="{% static 'img/category_images/default.jpg' %}" alt="Default Category">
+          <img src="{% static 'category_images/default.png' %}">
         {% endif %}
 
         <span class="one-third">
