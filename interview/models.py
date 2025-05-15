@@ -6,9 +6,9 @@ from django.conf import settings
 # Create your models here.
 class Category(models.Model):
     name=models.CharField(max_length=50)
-    image = models.ImageField(
-        upload_to='category_images/',
-        default='category_images/default.png',
+    card_image = models.ImageField(
+        max_length=300,
+        default='default.png',
         blank=True
     )
 

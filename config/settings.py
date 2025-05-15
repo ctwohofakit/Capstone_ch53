@@ -39,6 +39,8 @@ MEDIA_ROOT = BASE_DIR / "media"
 # SECURITY WARNING: keep the secret key used in production secret!
 SECRET_KEY = env.str("SECRET_KEY")
 RECAPTCHA_SECRET_KEY =env.str("RECAPTCHA_SECRET_KEY")
+SOCIAL_AUTH_GOOGLE_OAUTH2_KEY    = env.str('GOOGLE_OAUTH_CLIENT_ID')
+SOCIAL_AUTH_GOOGLE_OAUTH2_SECRET = env.str('GOOGLE_OAUTH_CLIENT_SECRET')
 
 
 # SECURITY WARNING: don't run with debug turned on in production!
@@ -75,16 +77,13 @@ INSTALLED_APPS = [
     'accounts',
 
     #allauth
-    # "django.contrib.sites",
-    # "allauth",
-    # "allauth.account",
-    # "allauth.socialaccount",
-    # "allauth.socialaccount.providers.google",
+    'social_django',
+
 ]
 
 
 #suppose to use 1, but there was prefine site, example.com 2
-SITE_ID = 1
+# SITE_ID = 1
 
 MIDDLEWARE = [
     'django.middleware.security.SecurityMiddleware',
@@ -95,10 +94,20 @@ MIDDLEWARE = [
     'django.contrib.auth.middleware.AuthenticationMiddleware',
     'django.contrib.messages.middleware.MessageMiddleware',
     'django.middleware.clickjacking.XFrameOptionsMiddleware',
-    # 'allauth.account.middleware.AccountMiddleware',
+    'social_django.middleware.SocialAuthExceptionMiddleware',
 
 ]
-
+SOCIAL_AUTH_PIPELINE = (
+    'social_core.pipeline.social_auth.social_details',
+    'social_core.pipeline.social_auth.social_uid',
+    'social_core.pipeline.social_auth.auth_allowed',
+    'social_core.pipeline.social_auth.social_user',
+    'social_core.pipeline.social_auth.associate_by_email',
+    'social_core.pipeline.user.create_user',
+    'social_core.pipeline.social_auth.associate_user',
+    'social_core.pipeline.social_auth.load_extra_data',
+    'social_core.pipeline.user.user_details',
+)
 
 ROOT_URLCONF = 'config.urls'
 
@@ -113,6 +122,10 @@ TEMPLATES = [
                 'django.template.context_processors.request',
                 'django.contrib.auth.context_processors.auth',
                 'django.contrib.messages.context_processors.messages',
+
+                #soical login
+                'social_django.context_processors.backends',
+                'social_django.context_processors.login_redirect',
             ],
         },
     },
@@ -130,7 +143,7 @@ DATABASES = {
     "default": dj_database_url.config(
         default=f"sqlite:///{BASE_DIR / 'db.sqlite3'}",
         conn_max_age=600,
-        ssl_require=True
+        ssl_require=False
     )
 }
 
@@ -188,21 +201,30 @@ EMAIL_USE_TLS=True
 EMAIL_HOST_USER=env('SMTP_EMAIL')
 EMAIL_HOST_PASSWORD=env('SMTP_PASS')
 
-LOGIN_REDIRECT_URL = '/'
 
+LOGIN_URL= 'login'
+#for redirection after login
+LOGIN_REDIRECT_URL="/interview/list/"
+LOGOUT_REDIRECT_URL="/"
+
+#for redirection if user try to re-signup and has the account
+SOCIAL_AUTH_LOGIN_REDIRECT_URL="/interview/list/"
+
+#for new signup user using social login, redirect page
+SOCIAL_AUTH_NEW_USER_REDIRECT_URL="/interview/list/"
 
 AUTH_USER_MODEL="accounts.Account"
-# SOCIALACCOUNT_PROVIDERS = {
-#     'google': {
-#         'SCOPE': [
-#             'profile',
-#             'email',
-#         ],
-#         'AUTH_PARAMS': {
-#             'access_type': 'online',
-#         },
-#     }
-# }
+SOCIALACCOUNT_PROVIDERS = {
+    'google': {
+        'SCOPE': [
+            'profile',
+            'email',
+        ],
+        'AUTH_PARAMS': {
+            'access_type': 'online',
+        },
+    }
+}
 
 # ACCOUNT_USER_MODEL_USERNAME_FIELD = None
 # ACCOUNT_LOGIN_METHODS   = ["email"]
@@ -211,10 +233,9 @@ AUTH_USER_MODEL="accounts.Account"
 
 AUTHENTICATION_BACKENDS = [
     "django.contrib.auth.backends.ModelBackend",           
-    # "allauth.account.auth_backends.AuthenticationBackend", 
+    'social_core.backends.google.GoogleOAuth2',
 ]
-LOGIN_REDIRECT_URL="/"
-LOGOUT_REDIRECT_URL="/"
+
 
 # SOCIALACCOUNT_LOGIN_ON_GET=True
 # ACCOUNT_LOGIN_ON_EMAIL_CONFIRMATION = True

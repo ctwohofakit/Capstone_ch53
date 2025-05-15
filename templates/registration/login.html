@@ -10,27 +10,35 @@
 
 {%block content%}
 
-    <div class="project-form">
-        <div class="project-form-head">
-        <h2>Log In</h2>
-        </div>
-        <div class="project-form-container" >
-            <form method="POST">
-                {%csrf_token%}
-                <div class="project-inner">
-                {{form.as_p}}
-                </div>
-                <br>
-                <input type="submit" class="edit-btn" value="Log In">
-            </form>
+<div class="project-form">
+  <div class="project-form-head">
+    <h2>Log In</h2>
+  </div>
+  <div class="project-form-container" >
+      <form method="POST">
+          {%csrf_token%}
+          <div class="project-inner">
+          {{form.as_p}}
+          </div>
+          <br>
+          <input type="submit" class="edit-btn" value="Log In">
+      </form>
+{% load static %}
 
-            <div class="sign-btn">
-            <p>Don't have an account? <a href="{% url 'signup' %}"> Sign Up </a>
-            </p>
-            </div>
-            </div>
+  <hr>
+  <div>
+    <a class="google-btn" href="{% url 'social:begin' 'google-oauth2' %}?next={{ request.path }}">
+      Log in with Google
+    </a>
+  </div>
+
+    <div class="sign-btn">
+    <p>Don't have an account? <a href="{% url 'signup' %}"> Sign Up </a>
+    </p>
     </div>
+  </div>
+</div>
 
-
+</div>
 
 {%endblock content%}

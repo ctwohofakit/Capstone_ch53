@@ -45,7 +45,11 @@
     </form>
 
     <hr>
-
+  <div>
+    <a class="google-btn" href="{% url 'social:begin' 'google-oauth2' %}?next=/interview/list">
+      Sign up with Google
+    </a>
+  </div>
 
     <div class="sign-btn">
     <p>Already have an account? <a href="{% url 'login' %}"> Login </a>
