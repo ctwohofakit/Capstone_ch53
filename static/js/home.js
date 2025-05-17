@@ -25,4 +25,17 @@ document.addEventListener("DOMContentLoaded", () => {
   blocks.forEach(el => io.observe(el));
 });
 
+
+document.addEventListener('DOMContentLoaded', () => {
+  const navToggle = document.getElementById('nav-toggle');
+  document
+    .querySelectorAll('.nav-menu-mobile a')
+    .forEach(link => {
+      link.addEventListener('click', () => {
+        navToggle.checked = false;
+      });
+    });
+});
+
+
 window.onload=init;
