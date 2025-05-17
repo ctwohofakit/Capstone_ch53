@@ -9,7 +9,11 @@ from .forms import ContactForm
 def home_view(request):
     return render(request, "pages/home.html")
 
+def terms_view(request):
+    return render(request, "pages/terms.html")
 
+def privacy_view(request):
+    return render(request, "pages/privacy.html")
 
 def contact_view(request):
     if request.method == "POST":

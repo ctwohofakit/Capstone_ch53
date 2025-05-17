@@ -1,0 +1,118 @@
+{%extends "base.html"%}
+{%block title%}Home{%endblock title%}
+
+{%load static%}
+{% block css %}
+<link rel="stylesheet"href="{% static 'css/terms.css' %}">
+<link rel="stylesheet"href="{% static 'css/responsive.css' %}">
+{% endblock css %}
+
+
+{%block content%}
+
+<div class="term-section">
+   <div class="text-center"><h1 class="term-h1">PrepPoint Terms of Service</h1>
+    <p><em>Last updated: May 17, 2025</em></p></div>
+    <p>Welcome to PrepPoint! These Terms of Service ("Terms") govern your use of PrepPoint's website and services (collectively, the "Service"). By accessing or using the Service, you agree to be bound by these Terms.</p>
+
+    <div class="term-content">
+    <h3>1. Acceptance of Terms</h3>
+    <p>By creating an account or accessing the Service, you confirm that you have read, understood, and agree to these Terms and our Privacy Policy. If you do not agree, please do not use the Service.</p>
+
+    <h3>2. Eligibility</h3>
+    <p>You must be at least 13 years old to use PrepPoint. If you are under 18, you may use the Service only with the involvement of a parent or guardian.</p>
+
+    <h3>3. Account Registration</h3>
+    <ul>
+        <li>
+            <p><strong>Account Information</strong>: You agree to provide accurate and up-to-date information when registering.</p>
+        </li>
+        <li>
+            <p><strong>Credentials</strong>: You are responsible for safeguarding your password and account. Any activity under your account is your responsibility.</p>
+        </li>
+    </ul>
+    <h3>4. Service Description</h3>
+    <p>PrepPoint provides an AI-powered interview practice platform that generates technical and non-technical questions and feedback. We reserve the right to modify or discontinue any aspect of the Service at any time.</p>
+
+    <h3>5. User Conduct</h3>
+    <p>You agree not to:</p>
+    <ul>
+        <li>
+            <p>Use the Service for unlawful purposes.</p>
+        </li>
+        <li>
+            <p>Harass, abuse, or harm others.</p>
+        </li>
+        <li>
+            <p>Upload content that infringes on intellectual property or violates privacy rights.</p>
+        </li>
+        <li>
+            <p>Interfere with the operation or security of the Service.</p>
+        </li>
+    </ul>
+    <h3>6. Content Ownership</h3>
+    <ul>
+        <li>
+            <p><strong>Your Content</strong>: You retain ownership of any text, files, or other materials you submit.</p>
+        </li>
+        <li>
+            <p><strong>License to PrepPoint</strong>: You grant PrepPoint a non-exclusive, worldwide, royalty-free license to use and display your content in connection with the Service.</p>
+        </li>
+        <li>
+            <p><strong>PrepPoint Content</strong>: All code, AI models, designs, and other materials provided by PrepPoint are proprietary and protected.</p>
+        </li>
+    </ul>
+    <h3>7. Privacy</h3>
+    <p>Your use of the Service is governed by our Privacy Policy, which describes how we collect and use your personal information.</p>
+
+    <h3>8. Fees and Payments</h3>
+    <p>Some features of the Service may require payment. All fees are listed on our website and are non-refundable except as required by law.</p>
+    <h3>9. Disclaimers and Limitation of Liability</h3>
+    <ul>
+        <li>
+            <p><strong>No Guarantee</strong>: PrepPoint does not guarantee job offers or interview success.</p>
+        </li>
+        <li>
+            <p><strong>AS-IS</strong>: The Service is provided &quot;as is&quot; and &quot;as available.&quot; PrepPoint disclaims all warranties, express or implied.</p>
+        </li>
+        <li>
+            <p><strong>Liability Cap</strong>: To the maximum extent permitted by law, PrepPoint&rsquo;s total liability to you for any claim is limited to the amounts you have paid in the prior 12 months.</p>
+        </li>
+    </ul>
+    <h3>10. Indemnification</h3>
+    <p>You agree to indemnify and hold harmless PrepPoint, its affiliates, and their officers, directors, and employees from any claims arising from your breach of these Terms or your misuse of the Service.</p>
+    <h3>11. Termination</h3>
+    <p>PrepPoint may suspend or terminate your access for any violation of these Terms. You may terminate your account at any time by contacting support.</p>
+
+    <h3>12. Changes to Terms</h3>
+    <p>We may revise these Terms at any time. We will notify you of material changes via the Service or email. Continued use after changes constitutes acceptance.</p>
+
+    <h3>13. Governing Law</h3>
+    <p>These Terms are governed by the laws of the State of California, without regard to conflict of laws principles.</p>
+
+    <h3>14. Contact Us</h3>
+    <p>If you have questions or feedback, please contact us at <a href="{%url 'contact'%}">here</a>.</p>
+
+    </div>
+</div>
+
+<footer>
+    <p>Pre Point @ All rights reserved</p>
+    <div class="footer-center">
+        <div class="socialmedia">
+            <a href="https://linkein.com" class="socialmedia-a"><img  src="{%static '/img/linkein.png'%}"></a>
+            <a href="https://youtube.com" class="socialmedia-a"><img src="{%static '/img/youtube.png'%}"></a>
+            <a href="https://facebook.com"class="socialmedia-a"><img src="{%static '/img/facebook.png'%}"></a>
+  
+        </div>
+    </div>
+    <div class="right-footer">
+        <a href="{%url 'terms'%}">Terms of Service</a>
+        <a href="{%url 'privacy'%}">Privacy Policy</a>
+    </div>
+  
+</footer>
+
+
+
+{%endblock content%}

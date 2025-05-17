@@ -10,7 +10,6 @@ class AccountManager(BaseUserManager):
         if not email:
             raise ValueError("The Email field is required")
         email = self.normalize_email(email)
-        # If you still have a username column, default it to the email
         extra_fields.setdefault("username", email)
         user = self.model(email=email, **extra_fields)
         user.set_password(password)

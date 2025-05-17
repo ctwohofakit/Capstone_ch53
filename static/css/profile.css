@@ -50,7 +50,22 @@ body{
     display: flex;
     justify-content: center;
     width:100%;
+    overflow:hidden;
+    opacity: 1;
+    max-height: 200px;
+    transition: max-height 0.5s ease, opacity 0.5 ease;
+    animation:hideMsg 0.3s ease-in 3s forwards;
 }
+
+@keyframes hideMsg{
+    to{
+        opacity: 0;
+        max-height: 0;
+        padding: 0;
+        margin:0;
+    }
+}
+
 .alertsuccess{
     width:60%;
     text-align: center;

@@ -1,0 +1,187 @@
+{%extends "base.html"%}
+{%block title%}Home{%endblock title%}
+
+{%load static%}
+{% block css %}
+<link rel="stylesheet"href="{% static 'css/terms.css' %}">
+<link rel="stylesheet"href="{% static 'css/responsive.css' %}">
+{% endblock css %}
+
+
+{%block content%}
+
+<div class="term-section">
+   <div class="text-center"><h1 class="term-h1">PrepPoint Privacy Policy </h1>
+    <p><em>Last updated: May 17, 2025</em></p></div>
+    <p>This Privacy Policy explains how PrepPoint (“we,” “us,” or “our”) collects, uses, discloses, and protects your information when you use our AI–powered interview practice platform at <a href="https://preppoint.us">www.preppoint.us</a> (the “Service”). By accessing or using the Service, you agree to the terms of this Privacy Policy.</p>
+
+    <div class="term-content">
+    <h2>1. Information We Collect</h2>
+    <h3>1.1. Information You Provide Directly</h3>
+    <ul>
+        <li>
+            <p><strong>Account Data.</strong> When you register, we collect your name, email address, and password.</p>
+        </li>
+        <li>
+            <p><strong>Interview Data.</strong> We store your mock-interview questions, answers, and AI generated feedback.</p>
+        </li>
+        <li>
+            <p><strong>Support & Feedback.</strong> Any messages you send to our support team or feedback forms.</p>
+        </li>
+    </ul>
+    <h3>1.2. Automatically Collected Information</h3>
+    <ul>
+        <li>
+            <p><strong>Usage Data.</strong> Pages you visit, features you use, timestamps, click events.</p>
+        </li>
+        <li>
+            <p><strong>Device & Log Data.</strong> IP address, browser type, operating system, referring URLs, and error logs.</p>
+        </li>
+        <li>
+            <p><strong>Cookies & Tracking.</strong> We use cookies and similar technologies (see Section 5).</p>
+        </li>
+    </ul>
+<hr>
+    <h2>2. How We Use Your Information</h2>
+    <ul>
+        <li>
+            <p><strong>To Provide the Service.</strong> Authenticate you, run AI interviews, store transcripts and feedback.</p>
+        </li>
+        <li>
+            <p><strong>To Improve the Service.</strong> Analyze usage patterns to enhance our platform and develop new features.</p>
+        </li>
+        <li>
+            <p><strong>To Communicate.</strong> Send you account confirmations, technical notices, updates, and marketing materials (you can opt out).</p>
+        </li>
+        <li>
+            <p><strong>To Secure Our Platform.</strong> Monitor for fraud, abuse, and security incidents.</p>
+        </li>
+    </ul>
+
+<hr>
+    <h2>3. How We Share Your Information</h2>
+    <h3>3.1. With Service Providers</h3>
+    <ul>
+        <li>
+            <p><strong>AI & Analytics.</strong> We send interview transcripts to our AI partner (e.g. OpenAI) for real-time feedback.</p>
+        </li>
+        <li>
+            <p><strong>Cloud Storage.</strong> We store uploaded files (profile pictures, resumes) on Google Cloud Storage.</p>
+        </li>
+        <li>
+            <p><strong>Email & Support.</strong> We use third-party email providers to send notifications and handle support tickets.</p>
+        </li>
+    </ul>
+    <h3>3.2. Legal & Safety</h3>
+    <ul>
+        <li>
+            <p>To comply with laws, regulations, or legal processes.</p>
+        </li>
+        <li>
+            <p>To protect our rights, property, safety, or that of our users or the public.</p>
+        </li>
+    </ul>
+    <h3>3.3. Business Transfers</h3>
+    <ul>
+        <li>
+            <p>In connection with a merger, acquisition, or sale of assets; any successor entity will maintain this policy.</p>
+        </li>
+    </ul>
+
+<hr>
+    <h2>4. Cookies & Tracking Technologies</h2>
+    <p>We use cookies, local storage, and similar technologies to:</p>
+    <ul>
+        <li>
+            <p>Remember your preferences and login session.</p>
+        </li>
+        <!-- <li>
+            <p>Measure and improve performance (e.g. Google Analytics).</p>
+        </li>
+        <li>
+            <p>Serve personalized content and ads.</p>
+        </li> -->
+    </ul>
+    <p>You can disable most cookies via your browser settings, though some features may not function without them.</p>
+
+<hr>
+    <h2>5. Data Retention</h2>
+    <p>We retain your personal data only as long as necessary to provide the Service, comply with legal obligations, resolve disputes, and enforce our agreements.</p>
+    <ul>
+        <li>
+            <p><strong>Account Data:</strong> Until you delete your account, plus up to 2 years afterward for audit and fraud-prevention purposes.</p>
+        </li>
+        <li>
+            <p><strong>Interview Transcripts:</strong> Retained indefinitely to let you review past sessions.</p>
+        </li>
+    </ul>
+
+<hr>
+    <h2>6. Data Security</h2>
+    <p>We implement industry-standard safeguards, including:</p>
+    <ul>
+        <li>
+            <p>Encryption in transit (HTTPS) and at rest (AES-256 on cloud storage).</p>
+        </li>
+        <li>
+            <p>Access controls and least-privilege permissions for our staff and third-party services.</p>
+        </li>
+        <li>
+            <p>Regular vulnerability assessments and security reviews.</p>
+        </li>
+    </ul>
+<hr>
+    <h2>7. Children's Privacy</h2>
+    <p>Our Service is not intended for persons under 13 years old. We do not knowingly collect or maintain personal information from children under 13.</p>
+
+<hr>
+    <h2>8. Your Rights & Choices</h2>
+    <ul>
+        <li>
+            <p><strong>Access & Correction.</strong> You can view or update your profile information in your account settings.</p>
+        </li>
+        <li>
+            <p><strong>Deletion.</strong> You may delete your account at any time; we'll remove your personal data promptly, except where retention is required by law.
+            contact us at <a href="{%url 'contact'%}">here</a>.
+            </p>
+        </li>
+        <li>
+            <p><strong>Cookies.</strong> Manage or disable cookies via your browser preferences.</p>
+        </li>
+    </ul>
+<hr>
+    <h2>9. International Transfers</h2>
+    <p>PrepPoint operates in the U.S. If you're outside the U.S., your data may be transferred to, stored, and processed in the U.S., where data protection laws may differ.</p>
+
+<hr>
+    <h2>10. Changes to This Policy</h2>
+    <p>We may update this policy occasionally. When we do, we'll revise the Last updated's date. We encourage you to review this page periodically. Your continued use after changes indicates your consent.</p>
+
+<hr>
+    <h2>11. Contact Us</h2>
+    <p>If you have questions, concerns, or requests about this Privacy Policy, please contact us at <a href="{%url 'contact'%}">here</a>.</p>
+
+    </div>
+</div>
+
+<footer>
+    <p>Pre Point @ All rights reserved</p>
+    <div class="footer-center">
+        <div class="socialmedia">
+            <a href="https://linkein.com" class="socialmedia-a"><img  src="{%static '/img/linkein.png'%}"></a>
+            <a href="https://youtube.com" class="socialmedia-a"><img src="{%static '/img/youtube.png'%}"></a>
+            <a href="https://facebook.com"class="socialmedia-a"><img src="{%static '/img/facebook.png'%}"></a>
+  
+        </div>
+    </div>
+    <div class="right-footer">
+        <a href="{%url 'terms'%}">Terms of Service</a>
+        <a href="{%url 'privacy'%}">Privacy Policy</a>
+    </div>
+</footer>
+
+
+
+
+
+{%endblock content%}
