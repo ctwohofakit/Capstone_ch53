@@ -178,6 +178,12 @@
     }
 
     /*contact*/
+    .contact {
+        padding:0;
+    }
+    .contentc-cards{
+        gap:0.2rem !important;
+    }
     .contact-dashboard .sidebar-container{
         display: none;
     }
@@ -311,6 +317,9 @@
 
     
     /*contact*/
+    .contact {
+        padding:0;
+    }
     .contact-dashboard .sidebar-container{
         display: none;
     }
