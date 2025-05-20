@@ -43,6 +43,8 @@ SOCIAL_AUTH_GOOGLE_OAUTH2_KEY    = env.str('GOOGLE_OAUTH_CLIENT_ID')
 SOCIAL_AUTH_GOOGLE_OAUTH2_SECRET = env.str('GOOGLE_OAUTH_CLIENT_SECRET')
 
 
+
+
 # SECURITY WARNING: don't run with debug turned on in production!
 DEBUG = env.bool("DEBUG", default=False)
 if DEBUG:
@@ -78,6 +80,8 @@ INSTALLED_APPS = [
 
     #allauth
     'social_django',
+
+    'storages',
 
 ]
 
@@ -240,12 +244,54 @@ AUTHENTICATION_BACKENDS = [
 # SOCIALACCOUNT_LOGIN_ON_GET=True
 # ACCOUNT_LOGIN_ON_EMAIL_CONFIRMATION = True
 
-STORAGES = {
-  'default': {
-    'BACKEND': 'django.core.files.storage.FileSystemStorage',
-    'OPTIONS': {'location': MEDIA_ROOT},
-  },
-  'staticfiles': {
-    'BACKEND': 'whitenoise.storage.CompressedManifestStaticFilesStorage',
-  },
+
+#s3
+AWS_ACCESS_KEY_ID=env("AWS_KEY")
+
+AWS_SECRET_ACCESS_KEY=env("AWS_SECRET")
+
+AWS_STORAGE_BUCKET_NAME=env("BUCKET")
+
+AWS_S3_REGION_NAME="us-east-2"
+
+AWS_QUERYSTRING_AUTH=False
+
+ 
+
+#DEFAULT_FILE_STORAGE = 'storages.backends.s3boto3.S3Boto3Storage'
+
+MEDIA_URL = f"https://{AWS_STORAGE_BUCKET_NAME}.s3.amazonaws.com/"
+
+ 
+
+AWS_S3_FILE_OVERWRITE = False
+
+AWS_DEFAULT_ACL = "public-read"
+
+ 
+
+STORAGES = { 
+
+    "default": {
+
+        "BACKEND": "storages.backends.s3boto3.S3Boto3Storage",
+
+    },    
+
+    "staticfiles": {
+
+        "BACKEND": "django.contrib.staticfiles.storage.StaticFilesStorage",
+
+    },
+
 }
+
+# STORAGES = {
+#   'default': {
+#     'BACKEND': 'django.core.files.storage.FileSystemStorage',
+#     'OPTIONS': {'location': MEDIA_ROOT},
+#   },
+#   'staticfiles': {
+#     'BACKEND': 'whitenoise.storage.CompressedManifestStaticFilesStorage',
+#   },
+# }
