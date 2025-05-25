@@ -65,6 +65,7 @@ OPENAI_API_KEY = env.str("OPENAI_API_KEY")
 # Application definition
 
 INSTALLED_APPS = [
+    'simpleui',
     'django.contrib.admin',
     'django.contrib.auth',
     'django.contrib.contenttypes',
